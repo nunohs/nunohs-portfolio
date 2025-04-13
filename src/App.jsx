@@ -17,26 +17,25 @@ function App() {
       projectUrl: 'https://github.com/nunohs',
       images: [
         {
-          url: '/webdesign3.jpg',
+          url: '/nunohs-portfolio/webdesign3.jpg',
           subtitle: 'Screenshot of the design #1'
         },
         {
-          url: '/sampledesign.png',
+          url: '/nunohs-portfolio/sampledesign.png',
           subtitle: 'Screenshot of the design #2'
         },
         {
-          url: '/projectroadmap.png',
+          url: '/nunohs-portfolio/projectroadmap.png',
           subtitle: 'Project Roadmap'
         },
         {
-          url: '/confluencepic.png',
+          url: '/nunohs-portfolio/confluencepic.png',
           subtitle: 'Confluence Documentation Home Page'
         },
         {
-          url: '/jirapic.png',
+          url: '/nunohs-portfolio/jirapic.png',
           subtitle: 'Jira Timeline'
         },
-
       ]
     },
     {
@@ -47,14 +46,13 @@ function App() {
       projectUrl: 'https://github.com/nunohs/nunohs-shadowdance',
       images: [
         {
-          url: '/sh2.png',
+          url: '/nunohs-portfolio/sh2.png',
           subtitle: 'Level 1'
         },
         {
-          url: '/sh6.png',
+          url: '/nunohs-portfolio/sh6.png',
           subtitle: 'Level 3'
         },
-        
       ]
     },
     {
@@ -65,10 +63,9 @@ function App() {
       projectUrl: 'https://github.com/nunohs/nunohs-mindycake',
       images: [
         {
-          url: '/mindy.png',
+          url: '/nunohs-portfolio/mindy.png',
           subtitle: 'Screenshot of the website'
         },
-        
       ]
     }
   ];
@@ -182,7 +179,7 @@ function App() {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                <img src="/hadipic.jpg" alt="Profile" className="w-full h-full object-cover" />
+                <img src="/nunohs-portfolio/hadipic.jpg" alt="Profile" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
