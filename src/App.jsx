@@ -6,13 +6,15 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [currentImageIndex, setCurrentImageIndex] = useState({1: 0, 2: 0, 3: 0});
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
 
   // Portfolio data
   const projects = [
     {
       id: 1,
       title: 'Australian Dictionary of Biographies Website',
-      description: 'A website made by 5 group members that addresses the issues of our client: <b>Dr Carolyn Rasmussen</b>. The source code is <b>private</b> due to client ownership, but project documentation is available via <b>Confluence</b> and <b>Jira</b>. Main contribution: API development and back-end implementation. Git Workflow: <b>GitLab Flow</b>',
+      description: 'This project involved developing a comprehensive website for the Australian Dictionary of Biographies. As part of a 5-member team, we worked directly with Dr. Carolyn Rasmussen to address specific client requirements. My main contributions included API development and back-end implementation. The project followed Agile methodologies with regular sprints and utilized GitLab Flow for version control. Due to client ownership, the source code is private, but project documentation is available through Confluence and Jira.',
       tags: ['Typescript', 'Node.js', 'Azure', 'Express','Jira', 'Confluence', 'Agile', 'REST APIs', 'AzureSQL', 'Docker', 'Postman', 'Gitlab Flow', 'Sprints' ],
       projectUrl: 'https://github.com/nunohs',
       images: [
@@ -41,7 +43,7 @@ function App() {
     {
       id: 2,
       title: 'Shadow Dance',
-      description: 'A Java 2D <b>"Rhythm Game"</b> that is similar to the game "Guitar Hero"',
+      description: 'Shadow Dance is a Java-based 2D rhythm game inspired by Guitar Hero. Players must press the correct keys in time with the music to score points. The game features multiple levels with increasing difficulty, custom music tracks, and visual effects. This project was developed as one of my assignments on my 2nd year of my degree to learn game development concepts and Java programming.',
       tags: ['Object-Oriented Programming', 'Java', 'Game-Development', 'Animation'],
       projectUrl: 'https://github.com/nunohs/nunohs-shadowdance',
       images: [
@@ -58,7 +60,7 @@ function App() {
     {
       id: 3,
       title: 'MindyCake',
-      description: "A <b>frontend</b> web app for my mom's bakery shop. ",
+      description: 'MindyCake is a frontend web application developed for my mom\'s local bakery shop. The website showcases the bakery\'s products, provides information about the business, and includes contact details for customer inquiries. Built with React and styled with Tailwind CSS, this project demonstrates my ability to create responsive and visually appealing user interfaces.',
       tags: ['React', 'Tailwind CSS', 'JavaScript'],
       projectUrl: 'https://github.com/nunohs/nunohs-mindycake',
       images: [
@@ -103,6 +105,27 @@ function App() {
       ...currentImageIndex,
       [projectId]: (currentImageIndex[projectId] - 1 + projectImages.length) % projectImages.length
     });
+  };
+
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+    setModalImageIndex(0);
+  };
+
+  const closeProjectModal = () => {
+    setSelectedProject(null);
+  };
+
+  const nextModalImage = () => {
+    if (selectedProject) {
+      setModalImageIndex((modalImageIndex + 1) % selectedProject.images.length);
+    }
+  };
+
+  const prevModalImage = () => {
+    if (selectedProject) {
+      setModalImageIndex((modalImageIndex - 1 + selectedProject.images.length) % selectedProject.images.length);
+    }
   };
 
   return (
@@ -252,7 +275,11 @@ function App() {
             <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
-                <div key={project.id} className="bg-white rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl">
+                <div 
+                  key={project.id} 
+                  className="bg-white rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+                  onClick={() => openProjectModal(project)}
+                >
                   {/* Image Carousel */}
                   <div className="relative">
                     <img 
@@ -263,7 +290,10 @@ function App() {
                     
                     {/* Carousel Controls */}
                     <button 
-                      onClick={() => prevImage(project.id)} 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        prevImage(project.id);
+                      }} 
                       className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -271,7 +301,10 @@ function App() {
                       </svg>
                     </button>
                     <button 
-                      onClick={() => nextImage(project.id)} 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        nextImage(project.id);
+                      }} 
                       className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -294,7 +327,7 @@ function App() {
                   
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 text-gray-800">{project.title}</h3>
-                    <p className="text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: project.description }}></p>
+                    <p className="text-gray-600 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag, index) => (
                         <span key={index} className="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-sm">
@@ -303,7 +336,13 @@ function App() {
                       ))}
                     </div>
                     <div className="pt-2">
-                      <a href={project.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-indigo-600 hover:text-indigo-700">
+                      <a 
+                        href={project.projectUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex items-center text-indigo-600 hover:text-indigo-700"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         View Project <ExternalLink size={16} className="ml-1" />
                       </a>
                     </div>
@@ -372,6 +411,121 @@ function App() {
           </div>
         </div>
       </footer>
+
+       {/* Project Modal */}
+       {selectedProject && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-5xl w-full max-h-screen overflow-y-auto">
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-6 border-b">
+              <h3 className="text-2xl font-bold text-gray-800">{selectedProject.title}</h3>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeProjectModal();
+                }}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            {/* Modal Content */}
+            <div className="p-6">
+              {/* Large Image Carousel */}
+              <div className="relative mb-8 bg-gray-100 rounded-lg overflow-hidden">
+                <img 
+                  src={selectedProject.images[modalImageIndex].url} 
+                  alt={selectedProject.title}
+                  className="w-full h-auto object-contain max-h-96 mx-auto"
+                />
+                
+                {/* Carousel Controls */}
+                <button 
+                  onClick={prevModalImage} 
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button 
+                  onClick={nextModalImage} 
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+                
+                {/* Image Description */}
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-4">
+                  <p className="text-lg">{selectedProject.images[modalImageIndex].subtitle}</p>
+                </div>
+
+                {/* Image Counter */}
+                <div className="absolute top-4 right-4 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full">
+                  {modalImageIndex + 1}/{selectedProject.images.length}
+                </div>
+              </div>
+
+              {/* Thumbnail Navigation */}
+              <div className="flex overflow-x-auto space-x-2 mb-6 pb-2">
+                {selectedProject.images.map((image, index) => (
+                  <button 
+                    key={index} 
+                    onClick={() => setModalImageIndex(index)}
+                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 ${
+                      modalImageIndex === index ? 'border-indigo-600' : 'border-transparent'
+                    }`}
+                  >
+                    <img 
+                      src={image.url} 
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover" 
+                    />
+                  </button>
+                ))}
+              </div>
+
+              {/* Project Details */}
+              <div className="mb-6">
+                <h4 className="text-xl font-semibold mb-3 text-gray-800">Project Details</h4>
+                <p className="text-gray-600 mb-4">{selectedProject.description}</p>
+                
+                <div className="mt-6">
+                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Technologies Used</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tags.map((tag, index) => (
+                      <span key={index} className="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-lg text-sm">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to action */}
+              <div className="flex justify-end space-x-4 mt-8">
+                <button 
+                  onClick={closeProjectModal}
+                  className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+                >
+                  Close
+                </button>
+                <a 
+                  href={selectedProject.projectUrl} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 flex items-center"
+                >
+                  Visit Project <ExternalLink size={16} className="ml-2" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
