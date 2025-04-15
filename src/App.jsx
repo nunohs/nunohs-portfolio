@@ -66,8 +66,16 @@ function App() {
       images: [
         {
           url: '/nunohs-portfolio/mindy.png',
-          subtitle: 'Screenshot of the website'
+          subtitle: 'Screenshot #1'
         },
+        {
+          url: '/nunohs-portfolio/mindypic1.png',
+          subtitle: 'Screenshot #2'
+        },
+        {
+          url: '/nunohs-portfolio/mindypic2.png',
+          subtitle: 'Screenshot #3'
+        }
       ]
     }
   ];
