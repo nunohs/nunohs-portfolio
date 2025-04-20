@@ -1,6 +1,14 @@
 import { useState } from 'react'
 import './App.css'
-import { Github, Linkedin, Mail, ExternalLink, Menu, X, Code, Database, Server, Globe, Cloud, Terminal } from 'lucide-react';
+import { 
+  Github, Linkedin, Mail, ExternalLink, Menu, X, Code, Database, Server, 
+  Globe, Cloud, Terminal, Laptop, FileCode, Boxes, BrainCircuit, 
+  CircuitBoard, Container, LayoutGrid, Settings, MessageSquareCode, 
+  Timer, Workflow, FileJson, Kanban, Layers, Cpu, Languages, 
+  FileType, Table, Database as DatabaseIcon, CloudCog, Workflow as WorkflowIcon,
+  GitBranch, Keyboard, Wrench, GitCompareArrows, SquareKanban, 
+  PanelLeft, Component, Infinity, Grid3X3, ArrowDownWideNarrow, FlaskConical, Dice1
+} from 'lucide-react';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -80,14 +88,87 @@ function App() {
     }
   ];
 
-  // Skills with icons
-  const skills = [
-    { name: 'React', icon: <Code size={28} /> },
-    { name: 'JavaScript', icon: <Terminal size={28} /> },
-    { name: 'Node.js', icon: <Server size={28} /> },
-    { name: 'MongoDB', icon: <Database size={28} /> },
-    { name: 'Tailwind CSS', icon: <Globe size={28} /> },
-    { name: 'Azure', icon: <Cloud size={28} /> },
+  // Skills with icons and categories
+  const skillCategories = [
+    {
+      name: "Programming Languages",
+      skills: [
+        { name: 'JavaScript', icon: <FileCode size={24} /> },
+        { name: 'TypeScript', icon: <FileType size={24} /> },
+        { name: 'Java', icon: <Cpu size={24} /> },
+        { name: 'Python', icon: <Cpu size={24} /> },
+        { name: 'C', icon: <Terminal size={24} /> },
+        { name: 'SQL', icon: <Database size={24} /> },
+        { name: 'HTML', icon: <Code size={24} /> },
+        { name: 'CSS', icon: <Layers size={24} /> },
+        { name: 'MATLAB', icon: <FlaskConical size={24} /> },
+      ]
+    },
+    {
+      name: "Frontend Development",
+      skills: [
+        { name: 'React', icon: <Component size={24} /> },
+        { name: 'Redux', icon: <Infinity size={24} /> },
+        { name: 'Tailwind CSS', icon: <LayoutGrid size={24} /> },
+        { name: 'Bootstrap', icon: <Grid3X3 size={24} /> },
+        { name: 'Vite', icon: <Component size={24} /> },
+      ]
+    },
+    {
+      name: "Backend Development",
+      skills: [
+        { name: 'Node.js', icon: <Server size={24} /> },
+        { name: 'Express', icon: <MessageSquareCode size={24} /> },
+        { name: 'REST APIs', icon: <Globe size={24} /> },
+        { name: 'Gradle', icon: <Boxes size={24} /> },
+      ]
+    },
+    {
+      name: "Databases & Cloud",
+      skills: [
+        { name: 'AzureSQL', icon: <DatabaseIcon size={24} /> },
+        { name: 'MySQL', icon: <Table size={24} /> },
+        { name: 'MongoDB', icon: <Database size={24} /> },
+        { name: 'Microsoft Azure', icon: <CloudCog size={24} /> },
+        { name: 'Cloud', icon: <Cloud size={24} /> },
+      ]
+    },
+    {
+      name: "DevOps & Version Control",
+      skills: [
+        { name: 'Git', icon: <GitBranch size={24} /> },
+        { name: 'Docker', icon: <Container size={24} /> },
+        { name: 'GitLab Flow', icon: <WorkflowIcon size={24} /> },
+      ]
+    },
+    {
+      name: "Development Tools",
+      skills: [
+        { name: 'Visual Studio Code', icon: <Keyboard size={24} /> },
+        { name: 'IntelliJ', icon: <Wrench size={24} /> },
+        { name: 'PyCharm', icon: <Wrench size={24} /> },
+        { name: 'Postman', icon: <GitCompareArrows size={24} /> },
+      ]
+    },
+    {
+      name: "Project Management & Methodologies",
+      skills: [
+        { name: 'Agile', icon: <Timer size={24} /> },
+        { name: 'Scrum', icon: <Workflow size={24} /> },
+        { name: 'Kanban', icon: <SquareKanban size={24} /> },
+        { name: 'Jira', icon: <PanelLeft size={24} /> },
+        { name: 'Confluence', icon: <FileJson size={24} /> },
+        { name: 'UML', icon: <Workflow size={24} /> },
+        { name: 'OOP', icon: <BrainCircuit size={24} /> },
+      ]
+    },
+    {
+      name: "Other Skills",
+      skills: [
+        { name: 'Game Development', icon: <CircuitBoard size={24} /> },
+        { name: 'Animation', icon: <Dice1 size={24} /> },
+      ]
+    }
   ];
 
   const scrollToSection = (section) => {
@@ -145,7 +226,7 @@ function App() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+            {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -168,7 +249,7 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white py-2">
             <div className="container mx-auto px-4 flex flex-col space-y-3">
-              {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+              {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -258,27 +339,8 @@ function App() {
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section id="skills" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">My Skills</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 max-w-4xl mx-auto">
-              {skills.map((skill, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div className="bg-white p-6 rounded-lg shadow-sm mb-3 w-full flex justify-center hover:shadow-md hover:bg-indigo-50 transition">
-                    <div className="text-indigo-600">
-                      {skill.icon}
-                    </div>
-                  </div>
-                  <span className="text-gray-700 font-medium">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="py-20 bg-white">
+        {/* Projects Section - Now before Skills */}
+        <section id="projects" className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -367,6 +429,34 @@ function App() {
                   View More On My GitHub
                 </a>
               </div>
+          </div>
+        </section>
+
+        {/* Skills Section - Now after Projects */}
+        <section id="skills" className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">My Skills</h2>
+            <div className="max-w-5xl mx-auto">
+              {skillCategories.map((category, categoryIndex) => (
+                <div key={categoryIndex} className="mb-12">
+                  <h3 className="text-xl font-semibold mb-6 text-indigo-700 border-b border-indigo-100 pb-2">
+                    {category.name}
+                  </h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div key={skillIndex} className="flex flex-col items-center group">
+                        <div className="bg-white p-4 rounded-lg shadow-sm mb-2 w-full flex justify-center items-center h-16 hover:shadow-md hover:bg-indigo-50 transition">
+                          <div className="text-indigo-600 group-hover:text-indigo-700 transition-colors">
+                            {skill.icon}
+                          </div>
+                        </div>
+                        <span className="text-gray-700 font-medium text-sm">{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
