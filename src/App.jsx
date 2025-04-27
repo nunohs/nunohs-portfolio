@@ -7,7 +7,7 @@ import {
   Timer, Workflow, FileJson, Kanban, Layers, Cpu, Languages, 
   FileType, Table, Database as DatabaseIcon, CloudCog, Workflow as WorkflowIcon,
   GitBranch, Keyboard, Wrench, GitCompareArrows, SquareKanban, 
-  PanelLeft, Component, Infinity, Grid3X3, ArrowDownWideNarrow, FlaskConical, Dice1, Cube
+  PanelLeft, Component, Infinity, Grid3X3, ArrowDownWideNarrow, FlaskConical, Dice1, Gamepad2
 } from 'lucide-react';
 
 function App() {
@@ -167,7 +167,7 @@ function App() {
       name: "Other Skills",
       skills: [
         { name: 'Game Development', icon: <CircuitBoard size={24} /> },
-        { name: 'Unity', icon: <Cube size={24} /> },
+        { name: 'Unity', icon: <Gamepad2 size={24} /> },
         { name: 'Animation', icon: <Dice1 size={24} /> },
       ]
     }
