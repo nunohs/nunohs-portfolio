@@ -276,11 +276,13 @@ function App() {
                 Hello, I'm <span className="text-indigo-600">Hadi Nuno Handrison</span>
               </h1>
               <h2 className="text-xl md:text-2xl text-gray-600 mb-6">
-                Full Stack Developer
+              Computer Science Graduate @ UniMelb | Master of Management @ USYD
               </h2>
               <p className="text-gray-600 mb-8 max-w-lg">
-                I build responsive, user-friendly applications with modern technologies.
-                Let's create something amazing together.
+              I build and support technology solutions across software, data, and business environments — with experience in development, analytics, and project delivery.
+              </p>
+              <p className="text-gray-600 mb-8 max-w-lg">
+              Open to graduate and internship opportunities across software, business analysis, and technology roles.
               </p>
               <div className="flex space-x-4">
                 <button onClick={() => scrollToSection('contact')} className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
@@ -309,26 +311,24 @@ function App() {
             <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">About Me</h2>
             <div className="max-w-3xl mx-auto bg-gray-50 p-8 rounded-lg shadow-sm">
               <div className="space-y-6">
-                <div className="flex flex-col md:flex-row md:items-center">
-                  <span className="font-medium w-full md:w-1/4 text-gray-700 mb-1 md:mb-0">Name:</span>
-                  <span className="text-gray-600">Hadi Nuno Handrison</span>
-                </div>
-                <div className="flex flex-col md:flex-row md:items-center">
-                  <span className="font-medium w-full md:w-1/4 text-gray-700 mb-1 md:mb-0">Age:</span>
-                  <span className="text-gray-600">21</span>
-                </div>
-                <div className="flex flex-col md:flex-row md:items-center">
-                  <span className="font-medium w-full md:w-1/4 text-gray-700 mb-1 md:mb-0">Location:</span>
-                  <span className="text-gray-600">Melbourne, Australia</span>
-                </div>
-                <div className="flex flex-col md:flex-row md:items-center">
-                  <span className="font-medium w-full md:w-1/4 text-gray-700 mb-1 md:mb-0">Education:</span>
-                  <span className="text-gray-600">B.S. Computing & Software Systems, University of Melbourne</span>
-                </div>
-                <div className="flex flex-col md:flex-row md:items-center">
-                  <span className="font-medium w-full md:w-1/4 text-gray-700 mb-1 md:mb-0">Looking For:</span>
-                  <span className="text-gray-600">Internships or Junior Dev Roles in 2025</span>
-                </div>
+              <p className="text text-indigo-900 italic">
+              I am a <strong>Computing and Software Systems</strong> graduate from the University of Melbourne, currently pursuing a <strong>Master of Management</strong> at the University of Sydney.
+
+              <br /><br />
+
+              My experience spans <strong>software development</strong>, <strong>data analysis</strong>, 
+              and <strong>business-facing technology work</strong>. During my internship at <strong>Bank Negara Indonesia</strong>, 
+              I supported <strong>IT Business Partners</strong> and project teams in managing <strong>system change requests</strong>, 
+              documenting <strong>technical processes</strong>, and contributing to <strong>cross-functional delivery</strong> in a large-scale banking environment.
+
+              <br /><br />
+
+              I am particularly interested in roles where <strong>technology meets business impact</strong> — whether 
+              through <strong>building systems</strong>, <strong>analysing data</strong>, or 
+              supporting <strong>projects that improve organisational performance
+                </strong>.
+              </p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">Location: Based in Australia</h3>
               </div>
               <div className="flex space-x-4 mt-8">
                 <a href="https://github.com/nunohs" target='_blank' className="bg-gray-700 hover:bg-gray-800 text-white p-3 rounded-full transition">
