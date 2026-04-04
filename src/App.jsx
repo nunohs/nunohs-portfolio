@@ -7,7 +7,8 @@ import {
   Timer, Workflow, FileJson, Kanban, Layers, Cpu, Languages, 
   FileType, Table, Database as DatabaseIcon, CloudCog, Workflow as WorkflowIcon,
   GitBranch, Keyboard, Wrench, GitCompareArrows, SquareKanban, 
-  PanelLeft, Component, Infinity, Grid3X3, ArrowDownWideNarrow, FlaskConical, Dice1, Gamepad2
+  PanelLeft, Component, Infinity, Grid3X3, ArrowDownWideNarrow, FlaskConical, Dice1, Gamepad2,
+  Briefcase
 } from 'lucide-react';
 
 function App() {
@@ -228,7 +229,7 @@ function App() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
+            {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -251,7 +252,7 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white py-2">
             <div className="container mx-auto px-4 flex flex-col space-y-3">
-              {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
+              {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -276,13 +277,13 @@ function App() {
                 Hello, I'm <span className="text-indigo-600">Hadi Nuno Handrison</span>
               </h1>
               <h2 className="text-xl md:text-2xl text-gray-600 mb-6">
-              Computer Science Graduate @ UniMelb | Master of Management @ USYD
+              Computer Science Graduate @UniMelb | Master of Management @USYD
               </h2>
               <p className="text-gray-600 mb-8 max-w-lg">
               I build and support technology solutions across software, data, and business environments — with experience in development, analytics, and project delivery.
               </p>
               <p className="text-gray-600 mb-8 max-w-lg">
-              Open to graduate and internship opportunities across software, business analysis, and technology roles.
+              Open to internship and graduate opportunities across software, business analysis, and technology roles.
               </p>
               <div className="flex space-x-4">
                 <button onClick={() => scrollToSection('contact')} className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
@@ -328,25 +329,57 @@ function App() {
               supporting <strong>projects that improve organisational performance
                 </strong>.
               </p>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">Location: Based in Australia</h3>
+              <h3 className="text font-semibold mb-2 text-gray-800">Location: Based in Australia</h3>
               </div>
               <div className="flex space-x-4 mt-8">
+              <a href="mailto:hadinuno@gmail.com" target='_blank' className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition">
+                  <Mail size={20} />
+                </a>
                 <a href="https://github.com/nunohs" target='_blank' className="bg-gray-700 hover:bg-gray-800 text-white p-3 rounded-full transition">
                   <Github size={20} />
                 </a>
                 <a href="https://www.linkedin.com/in/hadi-nuno-handrison/" target='_blank' className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition">
                   <Linkedin size={20} />
                 </a>
-                <a href="mailto:hadinuno@gmail.com" target='_blank' className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition">
-                  <Mail size={20} />
-                </a>
+                
               </div>
             </div>
           </div>
         </section>
 
+        {/* Experience Section */}
+        <section id="experience" className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800 flex items-center justify-center gap-3">
+              <Briefcase className="text-indigo-600 hidden sm:inline" size={32} aria-hidden />
+              Experience
+            </h2>
+            <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    IT Business Partner &amp; Project Management Intern
+                  </h3>
+                  <p className="text-lg text-indigo-700 font-medium mt-1">Bank Negara Indonesia (BNI)</p>
+                </div>
+              </div>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Supported IT Business Partners and project teams in managing system change requests and
+                technology initiatives within a banking environment.
+              </p>
+              <h4 className="text-lg font-semibold text-gray-800 mb-4">Key Contributions</h4>
+              <ul className="list-disc list-inside space-y-3 text-gray-600 marker:text-indigo-600">
+                <li>Prepared and managed change request (CR) documentation</li>
+                <li>Supported coordination between business and IT stakeholders</li>
+                <li>Contributed to system enhancement and regulatory documentation</li>
+                <li>Gained exposure to enterprise systems, IT governance, and project workflows</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Projects Section - Now before Skills */}
-        <section id="projects" className="py-20 bg-gray-50">
+        <section id="projects" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -439,7 +472,7 @@ function App() {
         </section>
 
         {/* Skills Section - Now after Projects */}
-        <section id="skills" className="py-20 bg-white">
+        <section id="skills" className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">My Skills</h2>
             <div className="max-w-5xl mx-auto">
@@ -467,9 +500,9 @@ function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-gray-50">
+        <section id="contact" className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">Get In Touch</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Get In Touch</h2>
             <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-sm">
               <h3 className="text-xl font-semibold mb-6 text-gray-800">Contact Information</h3>
               <div className="space-y-6">
@@ -506,7 +539,7 @@ function App() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <div className="font-bold text-xl mb-2">Hadi Nuno Handrison</div>
-              <p className="text-gray-400">Full Stack Developer</p>
+              <p className="text-gray-400">Computer Science Graduate | Master of Management Candidate | Technology, Data & Project-Focused</p>
             </div>
            
           </div>
