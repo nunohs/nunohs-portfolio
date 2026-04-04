@@ -2,12 +2,11 @@ import { useState } from 'react'
 import './App.css'
 import { 
   Github, Linkedin, Mail, ExternalLink, Menu, X, Code, Database, Server, 
-  Globe, Cloud, Terminal, Laptop, FileCode, Boxes, BrainCircuit, 
-  CircuitBoard, Container, LayoutGrid, Settings, MessageSquareCode, 
-  Timer, Workflow, FileJson, Kanban, Layers, Cpu, Languages, 
-  FileType, Table, Database as DatabaseIcon, CloudCog, Workflow as WorkflowIcon,
-  GitBranch, Keyboard, Wrench, GitCompareArrows, SquareKanban, 
-  PanelLeft, Component, Infinity, Grid3X3, ArrowDownWideNarrow, FlaskConical, Dice1, Gamepad2,
+  Globe, FileCode, FileSpreadsheet, ChartBar,
+  Container, Timer, Workflow, FileJson, Cpu,
+  FileType, Table, Database as DatabaseIcon, Workflow as WorkflowIcon,
+  GitBranch, GitCompareArrows,
+  PanelLeft, Component,
   Briefcase
 } from 'lucide-react';
 
@@ -92,86 +91,38 @@ function App() {
   // Skills with icons and categories
   const skillCategories = [
     {
-      name: "Programming Languages",
+      name: "Programming & Development",
       skills: [
         { name: 'JavaScript', icon: <FileCode size={24} /> },
         { name: 'TypeScript', icon: <FileType size={24} /> },
         { name: 'Java', icon: <Cpu size={24} /> },
         { name: 'Python', icon: <Cpu size={24} /> },
-        { name: 'C', icon: <Terminal size={24} /> },
-        { name: 'C#', icon: <FileCode size={24} /> },
         { name: 'SQL', icon: <Database size={24} /> },
-        { name: 'HTML', icon: <Code size={24} /> },
-        { name: 'CSS', icon: <Layers size={24} /> },
-        { name: 'MATLAB', icon: <FlaskConical size={24} /> },
-      ]
-    },
-    {
-      name: "Frontend Development",
-      skills: [
         { name: 'React', icon: <Component size={24} /> },
-        { name: 'Redux', icon: <Infinity size={24} /> },
-        { name: 'Tailwind CSS', icon: <LayoutGrid size={24} /> },
-        { name: 'Bootstrap', icon: <Grid3X3 size={24} /> },
-        { name: 'Vite', icon: <Component size={24} /> },
-      ]
-    },
-    {
-      name: "Backend Development",
-      skills: [
         { name: 'Node.js', icon: <Server size={24} /> },
-        { name: 'Express', icon: <MessageSquareCode size={24} /> },
-        { name: 'REST APIs', icon: <Globe size={24} /> },
-        { name: 'Gradle', icon: <Boxes size={24} /> },
       ]
     },
     {
-      name: "Databases & Cloud",
+      name: "Data & Systems",
       skills: [
         { name: 'AzureSQL', icon: <DatabaseIcon size={24} /> },
         { name: 'MySQL', icon: <Table size={24} /> },
-        { name: 'MongoDB', icon: <Database size={24} /> },
-        { name: 'Microsoft Azure', icon: <CloudCog size={24} /> },
-        { name: 'Cloud', icon: <Cloud size={24} /> },
+        {name: 'Microsoft Excel', icon: <FileSpreadsheet size={24} /> },
+        {name: 'Power BI', icon: <ChartBar size={24} /> },
       ]
     },
     {
-      name: "DevOps & Version Control",
+      name: "Tools & Workflow",
       skills: [
         { name: 'Git', icon: <GitBranch size={24} /> },
-        { name: 'Docker', icon: <Container size={24} /> },
-        { name: 'GitLab Flow', icon: <WorkflowIcon size={24} /> },
-      ]
-    },
-    {
-      name: "Development Tools",
-      skills: [
-        { name: 'Visual Studio Code', icon: <Keyboard size={24} /> },
-        { name: 'IntelliJ', icon: <Wrench size={24} /> },
-        { name: 'PyCharm', icon: <Wrench size={24} /> },
-        { name: 'Postman', icon: <GitCompareArrows size={24} /> },
-      ]
-    },
-    {
-      name: "Project Management & Methodologies",
-      skills: [
+        {name: 'Postman', icon: <GitCompareArrows size={24} /> },
         { name: 'Agile', icon: <Timer size={24} /> },
         { name: 'Scrum', icon: <Workflow size={24} /> },
-        { name: 'Kanban', icon: <SquareKanban size={24} /> },
         { name: 'Jira', icon: <PanelLeft size={24} /> },
         { name: 'Confluence', icon: <FileJson size={24} /> },
-        { name: 'UML', icon: <Workflow size={24} /> },
-        { name: 'OOP', icon: <BrainCircuit size={24} /> },
+        { name: 'REST APIs', icon: <Globe size={24} /> },
       ]
     },
-    {
-      name: "Other Skills",
-      skills: [
-        { name: 'Game Development', icon: <CircuitBoard size={24} /> },
-        { name: 'Unity', icon: <Gamepad2 size={24} /> },
-        { name: 'Animation', icon: <Dice1 size={24} /> },
-      ]
-    }
   ];
 
   const scrollToSection = (section) => {
