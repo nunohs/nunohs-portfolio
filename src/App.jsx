@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { PaperShaderBackground } from './components/ui/paper-shader-background'
 import { 
   Github, Linkedin, Mail, ExternalLink, Menu, X, Code, Database, Server, 
   Globe, FileCode, FileSpreadsheet, ChartBar,
@@ -172,11 +173,12 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="relative min-h-screen">
+      <PaperShaderBackground color1="#5b5ff0" color2="#e8ecfc" />
       {/* Header/Navigation */}
-      <header className="bg-white shadow-sm sticky top-0 z-10">
+      <header className="bg-white/80 backdrop-blur-md border-b border-indigo-100/60 shadow-sm sticky top-0 z-30">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="font-bold text-xl text-indigo-600">Hadi Nuno Handrison</div>
+          <div className="font-bold text-xl text-brand-700">Hadi Nuno Handrison</div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -185,7 +187,7 @@ function App() {
                 key={item}
                 onClick={() => scrollToSection(item)}
                 className={`${
-                  activeSection === item ? 'text-indigo-600 font-medium' : 'text-gray-600 hover:text-indigo-500'
+                  activeSection === item ? 'text-brand-600 font-medium' : 'text-slate-600 hover:text-brand-600'
                 } capitalize`}
               >
                 {item}
@@ -201,14 +203,14 @@ function App() {
         
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white py-2">
+          <div className="md:hidden bg-white/95 backdrop-blur-md py-2 border-t border-indigo-100/50">
             <div className="container mx-auto px-4 flex flex-col space-y-3">
               {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => scrollToSection(item)}
                   className={`${
-                    activeSection === item ? 'text-indigo-600 font-medium' : 'text-gray-600'
+                    activeSection === item ? 'text-brand-600 font-medium' : 'text-slate-600'
                   } capitalize py-2 text-left`}
                 >
                   {item}
@@ -219,34 +221,34 @@ function App() {
         )}
       </header>
 
-      <main>
+      <main className="relative z-10">
         {/* Hero Section */}
-        <section id="home" className="bg-gradient-to-br from-indigo-50 to-blue-50 py-20">
+        <section id="home" className="relative py-20 bg-white/25 backdrop-blur-[2px]">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                Hello, I'm <span className="text-indigo-600">Hadi Nuno Handrison</span>
+                Hello, I'm <span className="text-brand-600">Hadi Nuno Handrison</span>
               </h1>
-              <h2 className="text-xl md:text-2xl text-gray-600 mb-6">
+              <h2 className="text-xl md:text-2xl text-slate-700 mb-6">
               Computer Science Graduate @UniMelb | Master of Management @USYD
               </h2>
-              <p className="text-gray-600 mb-8 max-w-lg">
+              <p className="text-slate-700 mb-8 max-w-lg">
               I build and support technology solutions across software, data, and business environments — with experience in development, analytics, and project delivery.
               </p>
-              <p className="text-gray-600 mb-8 max-w-lg">
+              <p className="text-slate-700 mb-8 max-w-lg">
               Open to internship and graduate opportunities across software, business analysis, and technology roles.
               </p>
               <div className="flex space-x-4">
-                <button onClick={() => scrollToSection('contact')} className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
+                <button onClick={() => scrollToSection('contact')} className="bg-brand-600 text-white px-6 py-3 rounded-lg hover:bg-brand-700 shadow-md shadow-brand-600/25 transition">
                   Get in Touch
                 </button>
-                <button onClick={() => scrollToSection('projects')} className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-50 transition">
+                <button onClick={() => scrollToSection('projects')} className="border border-brand-600 text-brand-600 px-6 py-3 rounded-lg bg-white/60 hover:bg-white/90 backdrop-blur-sm transition">
                   View My Work
                 </button>
               </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/90 shadow-xl ring-2 ring-brand-200/60">
                 <img src="/nunohs-portfolio/hadi.jpg" 
                 alt="Profile" 
                 className="w-full h-full object-cover" 
@@ -258,12 +260,12 @@ function App() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-white">
+        <section id="about" className="py-20 bg-transparent">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">About Me</h2>
-            <div className="max-w-3xl mx-auto bg-gray-50 p-8 rounded-lg shadow-sm">
+            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">About Me</h2>
+            <div className="max-w-3xl mx-auto bg-white/75 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/70">
               <div className="space-y-6">
-              <p className="text text-indigo-900 italic">
+              <p className="text text-brand-900 italic">
               I am a <strong>Computing and Software Systems</strong> graduate from the University of Melbourne, currently pursuing a <strong>Master of Management</strong> at the University of Sydney.
 
               <br /><br />
@@ -280,7 +282,7 @@ function App() {
               supporting <strong>projects that improve organisational performance
                 </strong>.
               </p>
-              <h3 className="text font-semibold mb-2 text-gray-800">Location: Based in Australia</h3>
+              <h3 className="text font-semibold mb-2 text-slate-800">Location: Based in Australia</h3>
               </div>
               <div className="flex space-x-4 mt-8">
               <a href="mailto:hadinuno@gmail.com" target='_blank' className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition">
@@ -299,27 +301,27 @@ function App() {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="py-20 bg-gray-50">
+        <section id="experience" className="py-20 bg-white/20 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800 flex items-center justify-center gap-3">
-              <Briefcase className="text-indigo-600 hidden sm:inline" size={32} aria-hidden />
+            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900 flex items-center justify-center gap-3">
+              <Briefcase className="text-brand-600 hidden sm:inline" size={32} aria-hidden />
               Experience
             </h2>
-            <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+            <div className="max-w-3xl mx-auto bg-white/75 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/70">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-slate-800">
                     IT Business Partner &amp; Project Management Intern
                   </h3>
-                  <p className="text-lg text-indigo-700 font-medium mt-1">Bank Negara Indonesia (BNI)</p>
+                  <p className="text-lg text-brand-700 font-medium mt-1">Bank Negara Indonesia (BNI)</p>
                 </div>
               </div>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <p className="text-slate-700 mb-8 leading-relaxed">
                 Supported IT Business Partners and project teams in managing system change requests and
                 technology initiatives within a banking environment.
               </p>
-              <h4 className="text-lg font-semibold text-gray-800 mb-4">Key Contributions</h4>
-              <ul className="list-disc list-inside space-y-3 text-gray-600 marker:text-indigo-600">
+              <h4 className="text-lg font-semibold text-slate-800 mb-4">Key Contributions</h4>
+              <ul className="list-disc list-inside space-y-3 text-slate-700 marker:text-brand-600">
                 <li>Prepared and managed change request (CR) documentation</li>
                 <li>Supported coordination between business and IT stakeholders</li>
                 <li>Contributed to system enhancement and regulatory documentation</li>
@@ -330,14 +332,14 @@ function App() {
         </section>
 
         {/* Projects Section - Now before Skills */}
-        <section id="projects" className="py-20 bg-white">
+        <section id="projects" className="py-20 bg-transparent">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">Featured Projects</h2>
+            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
                 <div 
                   key={project.id} 
-                  className="bg-white rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+                  className="bg-white/85 backdrop-blur-md rounded-xl overflow-hidden border border-white/80 shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl hover:border-brand-200/80 cursor-pointer"
                   onClick={() => openProjectModal(project)}
                 >
                   {/* Image Carousel */}
@@ -379,18 +381,18 @@ function App() {
                   </div>
                   
                   {/* Image Subtitle */}
-                  <div className="px-4 py-2 border-b border-gray-100 bg-indigo-50">
-                    <p className="text-sm text-indigo-700 italic">
+                  <div className="px-4 py-2 border-b border-brand-100/80 bg-brand-50/90">
+                    <p className="text-sm text-brand-800 italic">
                       {project.images[currentImageIndex[project.id]].subtitle}
                     </p>
                   </div>
                   
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-gray-800">{project.title}</h3>
-                    <p className="text-gray-600 mb-4">{project.description}</p>
+                    <h3 className="text-xl font-semibold mb-2 text-slate-900">{project.title}</h3>
+                    <p className="text-slate-700 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag, index) => (
-                        <span key={index} className="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-sm">
+                        <span key={index} className="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-sm border border-brand-100/60">
                           {tag}
                         </span>
                       ))}
@@ -400,7 +402,7 @@ function App() {
                         href={project.projectUrl} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="inline-flex items-center text-indigo-600 hover:text-indigo-700"
+                        className="inline-flex items-center text-brand-600 hover:text-brand-700 font-medium"
                         onClick={(e) => e.stopPropagation()}
                       >
                         View Project <ExternalLink size={16} className="ml-1" />
@@ -414,7 +416,7 @@ function App() {
                 <a
                   href="https://github.com/nunohs" 
                   target='_blank'
-                  className="bg-indigo-600 hover:bg-pink-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors"
+                  className="bg-brand-600 hover:bg-brand-700 text-white px-6 py-2 rounded-full text-sm font-medium shadow-md shadow-brand-600/20 transition-colors"
                 >
                   View More On My GitHub
                 </a>
@@ -423,24 +425,24 @@ function App() {
         </section>
 
         {/* Skills Section - Now after Projects */}
-        <section id="skills" className="py-20 bg-gray-50">
+        <section id="skills" className="py-20 bg-white/25 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">My Skills</h2>
+            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">My Skills</h2>
             <div className="max-w-5xl mx-auto">
               {skillCategories.map((category, categoryIndex) => (
                 <div key={categoryIndex} className="mb-12">
-                  <h3 className="text-xl font-semibold mb-6 text-indigo-700 border-b border-indigo-100 pb-2">
+                  <h3 className="text-xl font-semibold mb-6 text-brand-700 border-b border-brand-200/80 pb-2">
                     {category.name}
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {category.skills.map((skill, skillIndex) => (
                       <div key={skillIndex} className="flex flex-col items-center group">
-                        <div className="bg-white p-4 rounded-lg shadow-sm mb-2 w-full flex justify-center items-center h-16 hover:shadow-md hover:bg-indigo-50 transition">
-                          <div className="text-indigo-600 group-hover:text-indigo-700 transition-colors">
+                        <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg border border-white/80 shadow-sm mb-2 w-full flex justify-center items-center h-16 hover:shadow-md hover:bg-brand-50/90 transition">
+                          <div className="text-brand-600 group-hover:text-brand-700 transition-colors">
                             {skill.icon}
                           </div>
                         </div>
-                        <span className="text-gray-700 font-medium text-sm">{skill.name}</span>
+                        <span className="text-slate-800 font-medium text-sm">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -451,31 +453,31 @@ function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-white">
+        <section id="contact" className="py-20 bg-transparent">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Get In Touch</h2>
-            <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-6 text-gray-800">Contact Information</h3>
+            <h2 className="text-3xl font-bold text-center mb-8 text-slate-900">Get In Touch</h2>
+            <div className="max-w-2xl mx-auto bg-white/75 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/70">
+              <h3 className="text-xl font-semibold mb-6 text-slate-900">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-center">
-                  <Mail className="mr-4 text-indigo-600" size={24} />
+                  <Mail className="mr-4 text-brand-600" size={24} />
                   <div>
-                    <h4 className="font-medium text-gray-800">Email</h4>
-                    <p className="text-gray-600">hadinuno@gmail.com</p>
+                    <h4 className="font-medium text-slate-900">Email</h4>
+                    <p className="text-slate-700">hadinuno@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Linkedin className="mr-4 text-indigo-600" size={24} />
+                  <Linkedin className="mr-4 text-brand-600" size={24} />
                   <div>
-                    <h4 className="font-medium text-gray-800">LinkedIn</h4>
-                    <p className="text-gray-600">https://www.linkedin.com/in/hadi-nuno-handrison/</p>
+                    <h4 className="font-medium text-slate-900">LinkedIn</h4>
+                    <p className="text-slate-700">https://www.linkedin.com/in/hadi-nuno-handrison/</p>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Github className="mr-4 text-indigo-600" size={24} />
+                  <Github className="mr-4 text-brand-600" size={24} />
                   <div>
-                    <h4 className="font-medium text-gray-800">GitHub</h4>
-                    <p className="text-gray-600">https://github.com/nunohs</p>
+                    <h4 className="font-medium text-slate-900">GitHub</h4>
+                    <p className="text-slate-700">https://github.com/nunohs</p>
                   </div>
                 </div>
               </div>
@@ -485,7 +487,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="relative z-10 bg-slate-900/95 backdrop-blur-md text-white py-12 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
@@ -494,7 +496,7 @@ function App() {
             </div>
            
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-white/10 mt-8 pt-8 text-center text-slate-400">
             <p>© {new Date().getFullYear()} Hadi Nuno Handrison. All rights reserved.</p>
           </div>
         </div>
@@ -564,7 +566,7 @@ function App() {
                     key={index} 
                     onClick={() => setModalImageIndex(index)}
                     className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 ${
-                      modalImageIndex === index ? 'border-indigo-600' : 'border-transparent'
+                      modalImageIndex === index ? 'border-brand-600' : 'border-transparent'
                     }`}
                   >
                     <img 
@@ -585,7 +587,7 @@ function App() {
                   <h4 className="text-lg font-semibold mb-2 text-gray-800">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tags.map((tag, index) => (
-                      <span key={index} className="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-lg text-sm">
+                      <span key={index} className="bg-brand-50 text-brand-700 px-4 py-2 rounded-lg text-sm border border-brand-100/50">
                         {tag}
                       </span>
                     ))}
@@ -605,7 +607,7 @@ function App() {
                   href={selectedProject.projectUrl} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 flex items-center"
+                  className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 flex items-center"
                 >
                   Visit Project <ExternalLink size={16} className="ml-2" />
                 </a>

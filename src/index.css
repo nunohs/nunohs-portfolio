@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Portfolio + paper shader — semantic tokens (Tailwind 3; optional reference) */
+:root {
+  --surface-glass: rgba(255, 255, 255, 0.78);
+  --surface-glass-border: rgba(255, 255, 255, 0.55);
+  --accent: #4f46e5;
+  --accent-soft: #e8ecfc;
+}
