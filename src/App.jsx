@@ -53,7 +53,7 @@ function App() {
       id: 2,
       title: 'Shadow Dance',
       description: 'Shadow Dance is a Java-based 2D rhythm game inspired by Guitar Hero. Players must press the correct keys in time with the music to score points. The game features multiple levels with increasing difficulty, custom music tracks, and visual effects. This project was developed as one of my assignments on my 2nd year of my degree to learn game development concepts and Java programming.',
-      tags: ['Object-Oriented Programming', 'Java', 'Game-Development', 'Animation'],
+      tags: ['Object-Oriented Programming', 'Java', 'Game-Development'],
       projectUrl: 'https://github.com/nunohs/nunohs-shadowdance',
       images: [
         {
@@ -68,22 +68,18 @@ function App() {
     },
     {
       id: 3,
-      title: 'MindyCake',
-      description: 'MindyCake is a frontend web application developed for my mom\'s local bakery shop. The website showcases the bakery\'s products, provides information about the business, and includes contact details for customer inquiries. Built with React and styled with Tailwind CSS, this project demonstrates my ability to create responsive and visually appealing user interfaces.',
-      tags: ['React', 'Tailwind CSS', 'JavaScript'],
-      projectUrl: 'https://github.com/nunohs/nunohs-mindycake',
+      title: 'Sales Performance Dashboard',
+      description: 'Analysed sales data using Power BI to identify trends, regional performance, and key revenue drivers. Developed an interactive dashboard to support data-driven decision making across product categories and geographic regions.',
+      tags: ['Power BI', 'Microsoft Excel', 'Data Analysis'],
+      projectUrl: 'https://github.com/nunohs/sales-performance-dashboard', 
       images: [
         {
-          url: '/nunohs-portfolio/mindy.png',
-          subtitle: 'Screenshot #1'
+          url: '/nunohs-portfolio/dashboard-overview-sales.png',
+          subtitle: 'Sales Performance Dashboard Overview'
         },
         {
-          url: '/nunohs-portfolio/mindypic1.png',
-          subtitle: 'Screenshot #2'
-        },
-        {
-          url: '/nunohs-portfolio/mindypic2.png',
-          subtitle: 'Screenshot #3'
+          url: '/nunohs-portfolio/datamodel.png',
+          subtitle: 'Data Model'
         }
       ]
     }
@@ -331,7 +327,7 @@ function App() {
           </div>
         </section>
 
-        {/* Projects Section - Now before Skills */}
+        {/* Projects Section*/}
         <section id="projects" className="py-20 bg-transparent">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">Featured Projects</h2>
