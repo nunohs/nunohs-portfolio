@@ -245,7 +245,7 @@ function App() {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/90 shadow-xl ring-2 ring-brand-200/60">
-                <img src="/nunohs-portfolio/hadi.jpg" 
+                <img src="/nunohs-portfolio/profilepic.png"  // dist\profilepic.jpg public\profilepic.jpg
                 alt="Profile" 
                 className="w-full h-full object-cover" 
                 style={{objectPosition: 'center 55%'}}
