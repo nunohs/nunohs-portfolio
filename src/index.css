@@ -2,10 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Portfolio + paper shader — semantic tokens (Tailwind 3; optional reference) */
 :root {
-  --surface-glass: rgba(255, 255, 255, 0.78);
-  --surface-glass-border: rgba(255, 255, 255, 0.55);
-  --accent: #4f46e5;
-  --accent-soft: #e8ecfc;
+  --bg-main: #F7F5F0;
+  --bg-gradient-1: #F8F6F1;
+  --bg-gradient-2: #EEF1E8;
+  --bg-gradient-3: #E6ECE3;
+  --section-bg: #ECEFE8;
+  --text-main: #2F3A32;
+  --text-muted: #5F6B61;
+  --accent: #70866B;
+  --accent-dark: #5E7358;
+  --accent-light: #DCE5D8;
+  --card-bg: #FCFBF8;
+  --border: #D7DED2;
+  --shadow: rgba(47, 58, 50, 0.08);
+  --surface-glass: rgba(252, 251, 248, 0.78);
+  --surface-glass-border: rgba(215, 222, 210, 0.82);
+  --accent-soft: rgba(112, 134, 107, 0.14);
+}
+
+@layer base {
+  html, body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+  }
 }

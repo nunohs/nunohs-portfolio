@@ -23,6 +23,28 @@ function App() {
   const featuredProjects = [
     {
       id: 1,
+      title: 'ADB Web Application',
+      hook: 'Full-stack web app managing 1,000–5,000 biographical entries for the Australian Dictionary of Biography.',
+      outcomes: [
+        'Led backend development for a 5-person team, delivering RESTful APIs with Node.js and TypeScript',
+        'Integrated AzureSQL database and containerized deployment pipeline with Docker',
+        'Ran Agile/Scrum sprints tracked end-to-end in JIRA with full documentation in Confluence',
+        'Source code is client-owned (private) — project documented comprehensively via Confluence',
+      ],
+      tags: ['TypeScript', 'Node.js', 'Express.js', 'Azure', 'Docker', 'REST APIs', 'AzureSQL'],
+      githubUrl: 'https://github.com/nunohs',  
+      demoUrl: null,
+      category: 'Full-Stack',
+      images: [
+        { url: '/nunohs-portfolio/webdesign3.jpg', subtitle: 'Web Design Screenshot #1' },
+        { url: '/nunohs-portfolio/sampledesign.png', subtitle: 'Web Design Screenshot #2' },
+        { url: '/nunohs-portfolio/projectroadmap.png', subtitle: 'Project Roadmap' },
+        { url: '/nunohs-portfolio/confluencepic.png', subtitle: 'Confluence Documentation' },
+        { url: '/nunohs-portfolio/jirapic.png', subtitle: 'Jira Timeline' },
+      ],
+    },
+    {
+      id: 2,
       title: 'Stock & Crypto Portfolio Tracker',
       hook: 'Live financial dashboard tracking portfolio performance, allocation breakdowns, and return vs benchmark.',
       outcomes: [
@@ -33,31 +55,9 @@ function App() {
       ],
       tags: ['Python', 'Streamlit', 'Plotly', 'pandas', 'Yahoo Finance API'],
       githubUrl: 'https://github.com/nunohs/financial-portfolio-tracker-dashboard',
-      demoUrl: null, // add live URL once confirmed
-      category: 'Data & Finance',
-      images: [],
-    },
-    {
-      id: 2,
-      title: 'ADB Web Application',
-      hook: 'Full-stack web app managing 1,000–5,000 biographical entries for the Australian Dictionary of Biography.',
-      outcomes: [
-        'Led backend development for a 5-person team, delivering RESTful APIs with Node.js and TypeScript',
-        'Integrated AzureSQL database and containerized deployment pipeline with Docker',
-        'Ran Agile/Scrum sprints tracked end-to-end in JIRA with full documentation in Confluence',
-        'Source code is client-owned (private) — project documented comprehensively via Confluence',
-      ],
-      tags: ['TypeScript', 'Node.js', 'Express.js', 'Azure', 'Docker', 'REST APIs', 'AzureSQL'],
-      githubUrl: 'https://github.com/nunohs',
       demoUrl: null,
-      category: 'Full-Stack',
-      images: [
-        { url: '/nunohs-portfolio/webdesign3.jpg', subtitle: 'Web Design Screenshot #1' },
-        { url: '/nunohs-portfolio/sampledesign.png', subtitle: 'Web Design Screenshot #2' },
-        { url: '/nunohs-portfolio/projectroadmap.png', subtitle: 'Project Roadmap' },
-        { url: '/nunohs-portfolio/confluencepic.png', subtitle: 'Confluence Documentation' },
-        { url: '/nunohs-portfolio/jirapic.png', subtitle: 'Jira Timeline' },
-      ],
+      category: 'Data & Finance',
+      images: [{ url: '/nunohs-portfolio/dashboard-screenshot1.png', subtitle: 'Dashboard Screenshot #1' }],
     },
     {
       id: 3,
@@ -75,7 +75,7 @@ function App() {
       category: 'Data & Finance',
       images: [
         { url: '/nunohs-portfolio/dashboard-overview-sales.png', subtitle: 'Dashboard Overview' },
-        { url: '/nunohs-portfolio/datamodel.png', subtitle: 'Data Model' },
+        { url: '/nunohs-portfolio/datamodel.png', subtitle: 'Data Model' }, 
       ],
     },
     {
@@ -92,7 +92,7 @@ function App() {
       githubUrl: 'https://github.com/nunohs/Strategic-Financial-Business-Analysis-Harvey-Norman',
       demoUrl: null,
       category: 'Business',
-      images: [],
+      images: [{ url: '/nunohs-portfolio/hvn_screenshot.png', subtitle: 'Harvey Norman Financial Analysis' }],
     },
   ];
 
@@ -174,7 +174,6 @@ function App() {
 
   const filterCategories = ['All', 'Data & Finance', 'AI', 'Full-Stack', 'Business'];
 
-  // Combined list for the "All Projects" grid: featured first, then others
   const allProjectsForGrid = [
     ...featuredProjects.map(fp => ({
       id: `featured-${fp.id}`,
@@ -213,15 +212,15 @@ function App() {
       skills: [
         { name: 'AzureSQL', icon: <DatabaseIcon size={24} /> },
         { name: 'MySQL', icon: <Table size={24} /> },
-        {name: 'Microsoft Excel', icon: <FileSpreadsheet size={24} /> },
-        {name: 'Power BI', icon: <ChartBar size={24} /> },
+        { name: 'Microsoft Excel', icon: <FileSpreadsheet size={24} /> },
+        { name: 'Power BI', icon: <ChartBar size={24} /> },
       ]
     },
     {
       name: "Tools & Workflow",
       skills: [
         { name: 'Git', icon: <GitBranch size={24} /> },
-        {name: 'Postman', icon: <GitCompareArrows size={24} /> },
+        { name: 'Postman', icon: <GitCompareArrows size={24} /> },
         { name: 'Agile', icon: <Timer size={24} /> },
         { name: 'Scrum', icon: <Workflow size={24} /> },
         { name: 'Jira', icon: <PanelLeft size={24} /> },
@@ -280,13 +279,13 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen">
-      <PaperShaderBackground color1="#5b5ff0" color2="#e8ecfc" />
+    <div className="relative min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
+      <PaperShaderBackground color1="#E6ECE3" color2="#F8F6F1" />
 
       {/* Header/Navigation */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-indigo-100/60 shadow-sm sticky top-0 z-30">
+      <header className="bg-[rgba(248,246,241,0.86)] backdrop-blur-md border-b border-[var(--border)] sticky top-0 z-30 shadow-[0_2px_18px_rgba(47,58,50,0.06)]">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="font-bold text-xl text-brand-700">Hadi Nuno Handrison</div>
+          <div className="font-syne font-bold text-xl text-[var(--accent-dark)]">Hadi Nuno Handrison</div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -294,9 +293,11 @@ function App() {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className={`${
-                  activeSection === item ? 'text-brand-600 font-medium' : 'text-slate-600 hover:text-brand-600'
-                } capitalize`}
+                className={`font-syne text-sm tracking-wide capitalize transition ${
+                  activeSection === item
+                    ? 'text-[var(--accent-dark)] font-medium underline underline-offset-8 decoration-2 decoration-[var(--accent)]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--accent-dark)]'
+                }`}
               >
                 {item}
               </button>
@@ -304,22 +305,22 @@ function App() {
           </nav>
 
           {/* Mobile menu button */}
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden">
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-[var(--text-muted)] hover:text-[var(--accent-dark)] transition">
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-md py-2 border-t border-indigo-100/50">
+          <div className="md:hidden bg-[rgba(252,251,248,0.96)] backdrop-blur-md py-2 border-t border-[var(--border)]">
             <div className="container mx-auto px-4 flex flex-col space-y-3">
               {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`${
-                    activeSection === item ? 'text-brand-600 font-medium' : 'text-slate-600'
-                  } capitalize py-2 text-left`}
+                  className={`font-syne capitalize py-2 text-left text-sm tracking-wide transition ${
+                    activeSection === item ? 'text-[var(--accent-dark)] font-medium' : 'text-[var(--text-muted)]'
+                  }`}
                 >
                   {item}
                 </button>
@@ -331,36 +332,43 @@ function App() {
 
       <main className="relative z-10">
         {/* Hero Section */}
-        <section id="home" className="relative py-20 bg-white/25 backdrop-blur-[2px]">
+        <section id="home" className="relative py-20">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                Hello, I'm <span className="text-brand-600">Hadi Nuno Handrison</span>
+              <h1 className="font-syne text-4xl md:text-5xl font-bold text-[var(--text-main)] mb-4 leading-tight">
+                Hello, I'm <span className="text-[var(--accent-dark)]">Hadi Nuno Handrison</span>
               </h1>
-              <h2 className="text-xl md:text-2xl text-slate-700 mb-6">
-              Computer Science Graduate @UniMelb | Master of Management @USYD
+              <h2 className="font-syne text-lg md:text-xl text-[var(--text-muted)] mb-6 font-medium">
+                Computer Science Graduate @UniMelb | Master of Management @USYD
               </h2>
-              <p className="text-slate-700 mb-8 max-w-lg">
-              I build and support technology solutions across software, data, and business environments — with experience in development, analytics, and project delivery.
+              <p className="text-[var(--text-muted)] mb-5 max-w-lg leading-relaxed">
+                I build and support technology solutions across software, data, and business environments — with experience in development, analytics, and project delivery.
               </p>
-              <p className="text-slate-700 mb-8 max-w-lg">
-              Open to internship and graduate opportunities across software, business analysis, and technology roles.
+              <p className="text-[var(--text-muted)] mb-8 max-w-lg leading-relaxed">
+                Open to internship and graduate opportunities across software, business analysis, and technology roles.
               </p>
-              <div className="flex space-x-4">
-                <button onClick={() => scrollToSection('contact')} className="bg-brand-600 text-white px-6 py-3 rounded-lg hover:bg-brand-700 shadow-md shadow-brand-600/25 transition">
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="font-syne bg-[var(--accent)] text-[var(--bg-main)] px-6 py-3 rounded-lg hover:bg-[var(--accent-dark)] font-semibold shadow-[0_10px_24px_rgba(47,58,50,0.12)] transition"
+                >
                   Get in Touch
                 </button>
-                <button onClick={() => scrollToSection('projects')} className="border border-brand-600 text-brand-600 px-6 py-3 rounded-lg bg-white/60 hover:bg-white/90 backdrop-blur-sm transition">
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="font-syne border border-[var(--accent)] text-[var(--accent-dark)] bg-[rgba(252,251,248,0.52)] px-6 py-3 rounded-lg hover:bg-[var(--accent-light)] transition"
+                >
                   View My Work
                 </button>
               </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/90 shadow-xl ring-2 ring-brand-200/60">
-                <img src="/nunohs-portfolio/profilepic.png"  // dist\profilepic.jpg public\profilepic.jpg
-                alt="Profile"
-                className="w-full h-full object-cover"
-                style={{objectPosition: 'center 55%'}}
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-[var(--card-bg)] shadow-[0_18px_46px_rgba(47,58,50,0.14)] ring-2 ring-[var(--accent-light)]">
+                <img
+                  src="/nunohs-portfolio/profilepic.png"  // dist\profilepic.jpg public\profilepic.jpg
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 55%' }}
                 />
               </div>
             </div>
@@ -368,68 +376,66 @@ function App() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-transparent">
+        <section id="about" className="py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">About Me</h2>
-            <div className="max-w-3xl mx-auto bg-white/75 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/70">
+            <h2 className="font-syne text-3xl font-bold text-center mb-16 text-[var(--text-main)]">About Me</h2>
+            <div className="max-w-3xl mx-auto bg-[var(--card-bg)] backdrop-blur-md p-8 rounded-xl border border-[var(--surface-glass-border)] shadow-[0_12px_34px_rgba(47,58,50,0.08)]">
               <div className="space-y-6">
-              <p className="text text-brand-900 italic">
-              I am a <strong>Computing and Software Systems</strong> graduate from the University of Melbourne, currently pursuing a <strong>Master of Management</strong> at the University of Sydney.
+                <p className="text-[var(--text-muted)] leading-relaxed italic">
+                  I am a <strong className="text-[var(--text-main)] font-semibold">Computing and Software Systems</strong> graduate from the University of Melbourne, currently pursuing a <strong className="text-[var(--text-main)] font-semibold">Master of Management</strong> at the University of Sydney.
 
-              <br /><br />
+                  <br /><br />
 
-              My experience spans <strong>software development</strong>, <strong>data analysis</strong>,
-              and <strong>business-facing technology work</strong>. During my internship at <strong>Bank Negara Indonesia</strong>,
-              I supported <strong>IT Business Partners</strong> and project teams in managing <strong>system change requests</strong>,
-              documenting <strong>technical processes</strong>, and contributing to <strong>cross-functional delivery</strong> in a large-scale banking environment.
+                  My experience spans <strong className="text-[var(--text-main)] font-semibold">software development</strong>, <strong className="text-[var(--text-main)] font-semibold">data analysis</strong>,
+                  and <strong className="text-[var(--text-main)] font-semibold">business-facing technology work</strong>. During my internship at <strong className="text-[var(--text-main)] font-semibold">Bank Negara Indonesia</strong>,
+                  I supported <strong className="text-[var(--text-main)] font-semibold">IT Business Partners</strong> and project teams in managing <strong className="text-[var(--text-main)] font-semibold">system change requests</strong>,
+                  documenting <strong className="text-[var(--text-main)] font-semibold">technical processes</strong>, and contributing to <strong className="text-[var(--text-main)] font-semibold">cross-functional delivery</strong> in a large-scale banking environment.
 
-              <br /><br />
+                  <br /><br />
 
-              I am particularly interested in roles where <strong>technology meets business impact</strong> — whether
-              through <strong>building systems</strong>, <strong>analysing data</strong>, or
-              supporting <strong>projects that improve organisational performance
-                </strong>.
-              </p>
-              <h3 className="text font-semibold mb-2 text-slate-800">Location: Based in Australia</h3>
+                  I am particularly interested in roles where <strong className="text-[var(--text-main)] font-semibold">technology meets business impact</strong> — whether
+                  through <strong className="text-[var(--text-main)] font-semibold">building systems</strong>, <strong className="text-[var(--text-main)] font-semibold">analysing data</strong>, or
+                  supporting <strong className="text-[var(--text-main)] font-semibold">projects that improve organisational performance</strong>.
+                </p>
+                <p className="text-[var(--text-muted)] font-medium">Location: Based in Australia</p>
               </div>
-              <div className="flex space-x-4 mt-8">
-              <a href="mailto:hadinuno@gmail.com" target='_blank' className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition">
+              <div className="flex space-x-3 mt-8">
+                <a href="mailto:hadinuno@gmail.com" target="_blank" className="bg-[var(--card-bg)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--accent-dark)] hover:border-[rgba(112,134,107,0.36)] p-3 rounded-full transition">
                   <Mail size={20} />
                 </a>
-                <a href="https://github.com/nunohs" target='_blank' className="bg-gray-700 hover:bg-gray-800 text-white p-3 rounded-full transition">
+                <a href="https://github.com/nunohs" target="_blank" className="bg-[var(--card-bg)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--accent-dark)] hover:border-[rgba(112,134,107,0.36)] p-3 rounded-full transition">
                   <Github size={20} />
                 </a>
-                <a href="https://www.linkedin.com/in/hadi-nuno-handrison/" target='_blank' className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition">
+                <a href="https://www.linkedin.com/in/hadi-nuno-handrison/" target="_blank" className="bg-[var(--card-bg)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--accent-dark)] hover:border-[rgba(112,134,107,0.36)] p-3 rounded-full transition">
                   <Linkedin size={20} />
                 </a>
-
               </div>
             </div>
           </div>
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="py-20 bg-white/20 backdrop-blur-sm">
+        <section id="experience" className="py-20 bg-[rgba(236,239,232,0.46)]">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900 flex items-center justify-center gap-3">
-              <Briefcase className="text-brand-600 hidden sm:inline" size={32} aria-hidden />
+            <h2 className="font-syne text-3xl font-bold text-center mb-16 text-[var(--text-main)] flex items-center justify-center gap-3">
+              <Briefcase className="text-[var(--accent-dark)] hidden sm:inline" size={28} aria-hidden />
               Experience
             </h2>
-            <div className="max-w-3xl mx-auto bg-white/75 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/70">
+            <div className="max-w-3xl mx-auto bg-[var(--card-bg)] backdrop-blur-md p-8 rounded-xl border border-[var(--surface-glass-border)] shadow-[0_12px_34px_rgba(47,58,50,0.08)]">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-800">
+                  <h3 className="font-syne text-xl font-semibold text-[var(--text-main)]">
                     IT Business Partner &amp; Project Management Intern
                   </h3>
-                  <p className="text-lg text-brand-700 font-medium mt-1">Bank Negara Indonesia (BNI)</p>
+                  <p className="font-syne text-lg text-[var(--accent-dark)] font-medium mt-1">Bank Negara Indonesia (BNI)</p>
                 </div>
               </div>
-              <p className="text-slate-700 mb-8 leading-relaxed">
+              <p className="text-[var(--text-muted)] mb-8 leading-relaxed">
                 Supported IT Business Partners and project teams in managing system change requests and
                 technology initiatives within a banking environment.
               </p>
-              <h4 className="text-lg font-semibold text-slate-800 mb-4">Key Contributions</h4>
-              <ul className="list-disc list-inside space-y-3 text-slate-700 marker:text-brand-600">
+              <h4 className="font-syne text-base font-semibold text-[var(--text-main)] mb-4 uppercase tracking-wide">Key Contributions</h4>
+              <ul className="list-disc list-inside space-y-3 text-[var(--text-muted)] marker:text-[var(--accent-dark)]">
                 <li>Prepared and managed change request (CR) documentation</li>
                 <li>Supported coordination between business and IT stakeholders</li>
                 <li>Contributed to system enhancement and regulatory documentation</li>
@@ -440,27 +446,27 @@ function App() {
         </section>
 
         {/* Projects Section — Two-tier redesign */}
-        <section id="projects" className="py-20 bg-transparent">
+        <section id="projects" className="py-20">
           <div className="container mx-auto px-4">
 
             {/* Section header */}
-            <h2 className="text-3xl font-bold text-center mb-3 text-slate-900">Projects</h2>
-            <p className="text-center text-slate-500 text-sm mb-16 max-w-xl mx-auto">
+            <h2 className="font-syne text-3xl font-bold text-center mb-3 text-[var(--text-main)]">Projects</h2>
+            <p className="text-center text-[var(--text-muted)] text-sm mb-16 max-w-xl mx-auto">
               Work spanning data analytics, full-stack development, and business analysis — from deployed apps to consulting-style reports.
             </p>
 
             {/* ── TIER 1: Featured Projects ── */}
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-10">
-                <h3 className="text-base font-semibold text-slate-600 uppercase tracking-wide whitespace-nowrap">Featured Projects</h3>
-                <div className="flex-1 h-px bg-brand-200/50"></div>
+                <h3 className="font-mono text-xs font-medium text-[var(--text-muted)] uppercase tracking-widest whitespace-nowrap">Featured Projects</h3>
+                <div className="flex-1 h-px bg-[var(--border)]"></div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {featuredProjects.map((project) => (
                   <div
                     key={project.id}
-                    className="bg-white/85 backdrop-blur-md rounded-xl overflow-hidden border border-white/80 shadow-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:border-brand-200/80 flex flex-col cursor-pointer"
+                    className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl overflow-hidden border border-[var(--surface-glass-border)] shadow-[0_10px_28px_rgba(47,58,50,0.07)] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(112,134,107,0.32)] hover:shadow-[0_8px_30px_rgba(47,58,50,0.10)] flex flex-col cursor-pointer"
                     onClick={() => openProjectModal(project)}
                   >
                     {/* Card header: image carousel or gradient banner */}
@@ -472,15 +478,15 @@ function App() {
                           className="w-full h-48 object-cover"
                         />
                         {/* Category badge */}
-                        <span className="absolute top-3 left-3 bg-black/55 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
+                        <span className="font-mono absolute top-3 left-3 bg-[rgba(252,251,248,0.88)] text-[var(--accent-dark)] text-xs font-medium px-3 py-1 rounded-full border border-[rgba(112,134,107,0.32)] backdrop-blur-sm">
                           {project.category}
                         </span>
-                        {/* Carousel controls — only when multiple images */}
+                        {/* Carousel controls */}
                         {project.images.length > 1 && (
                           <>
                             <button
                               onClick={(e) => { e.stopPropagation(); prevImage(project.id); }}
-                              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full hover:bg-black/70 transition"
+                              className="absolute left-2 top-1/2 -translate-y-1/2 bg-[rgba(47,58,50,0.72)] text-[var(--bg-main)] p-1.5 rounded-full hover:bg-[rgba(47,58,50,0.86)] transition"
                             >
                               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M15 18l-6-6 6-6" />
@@ -488,28 +494,28 @@ function App() {
                             </button>
                             <button
                               onClick={(e) => { e.stopPropagation(); nextImage(project.id); }}
-                              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full hover:bg-black/70 transition"
+                              className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(47,58,50,0.72)] text-[var(--bg-main)] p-1.5 rounded-full hover:bg-[rgba(47,58,50,0.86)] transition"
                             >
                               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M9 18l6-6-6-6" />
                               </svg>
                             </button>
-                            <div className="absolute top-3 right-3 bg-black/50 text-white text-xs px-2 py-0.5 rounded-full">
+                            <div className="font-mono absolute top-3 right-3 bg-[rgba(47,58,50,0.72)] text-[var(--bg-main)] text-xs px-2 py-0.5 rounded-full">
                               {currentImageIndex[project.id] + 1}/{project.images.length}
                             </div>
                           </>
                         )}
                         {/* Image subtitle */}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/65 to-transparent px-4 py-3">
-                          <p className="text-white text-xs leading-tight">{project.images[currentImageIndex[project.id]].subtitle}</p>
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[rgba(47,58,50,0.78)] to-transparent px-4 py-3">
+                          <p className="font-mono text-[var(--bg-main)] text-xs leading-tight">{project.images[currentImageIndex[project.id]].subtitle}</p>
                         </div>
                       </div>
                     ) : (
-                      <div className="h-32 bg-gradient-to-br from-brand-500 to-brand-800 relative overflow-hidden flex items-end px-5 pb-4 shrink-0">
-                        <div className="absolute -top-8 -right-8 w-36 h-36 bg-white/10 rounded-full" />
-                        <div className="absolute top-4 right-12 w-20 h-20 bg-white/5 rounded-full" />
-                        <div className="absolute -bottom-4 left-1/3 w-24 h-24 bg-white/5 rounded-full" />
-                        <span className="relative z-10 bg-white/25 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm">
+                      <div className="h-32 bg-gradient-to-br from-[var(--section-bg)] to-[var(--bg-gradient-1)] relative overflow-hidden flex items-end px-5 pb-4 shrink-0 border-b border-[var(--border)]">
+                        <div className="absolute top-0 left-0 right-0 h-px bg-[rgba(112,134,107,0.28)]" />
+                        <div className="absolute -top-8 -right-8 w-36 h-36 bg-[rgba(112,134,107,0.08)] rounded-full" />
+                        <div className="absolute top-4 right-12 w-20 h-20 bg-[rgba(112,134,107,0.06)] rounded-full" />
+                        <span className="font-mono relative z-10 bg-[var(--accent-soft)] text-[var(--accent-dark)] text-xs font-medium px-3 py-1 rounded-full border border-[rgba(112,134,107,0.32)]">
                           {project.category}
                         </span>
                       </div>
@@ -517,13 +523,13 @@ function App() {
 
                     {/* Card body */}
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="text-lg font-bold text-slate-900 mb-2">{project.title}</h3>
-                      <p className="text-slate-500 text-sm italic mb-4 leading-relaxed">{project.hook}</p>
+                      <h3 className="font-syne text-lg font-bold text-[var(--text-main)] mb-2">{project.title}</h3>
+                      <p className="text-[var(--text-muted)] text-sm italic mb-4 leading-relaxed">{project.hook}</p>
 
                       <ul className="space-y-2 mb-5">
                         {project.outcomes.map((outcome, i) => (
-                          <li key={i} className="flex items-start gap-2 text-slate-700 text-sm">
-                            <span className="text-brand-500 mt-0.5 shrink-0">▸</span>
+                          <li key={i} className="flex items-start gap-2 text-[var(--text-muted)] text-sm">
+                            <span className="text-[var(--accent-dark)] mt-0.5 shrink-0">▸</span>
                             <span>{outcome}</span>
                           </li>
                         ))}
@@ -531,21 +537,21 @@ function App() {
 
                       <div className="flex flex-wrap gap-1.5 mb-5">
                         {project.tags.map((tag, i) => (
-                          <span key={i} className="bg-brand-50 text-brand-700 px-2.5 py-0.5 rounded-full text-xs font-medium border border-brand-100/60">
+                          <span key={i} className="font-mono bg-[var(--accent-soft)] text-[var(--accent-dark)] px-2.5 py-0.5 rounded-full text-xs border border-[rgba(112,134,107,0.26)]">
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      {/* Links pushed to bottom — stopPropagation so they don't trigger modal */}
-                      <div className="flex flex-wrap gap-3 pt-3 mt-auto border-t border-slate-100/80">
+                      {/* Links — stopPropagation prevents triggering modal */}
+                      <div className="flex flex-wrap gap-3 pt-3 mt-auto border-t border-[var(--surface-glass-border)]">
                         {project.demoUrl && (
                           <a
                             href={project.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={e => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 px-3 py-1.5 rounded-lg transition"
+                            className="font-syne inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--bg-main)] bg-[var(--accent)] hover:bg-[var(--accent-dark)] px-3 py-1.5 rounded-lg transition"
                           >
                             <ExternalLink size={13} /> Live Demo
                           </a>
@@ -555,7 +561,7 @@ function App() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={e => e.stopPropagation()}
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 hover:text-brand-600 border border-slate-200 hover:border-brand-300 px-3 py-1.5 rounded-lg bg-white/60 transition"
+                          className="font-syne inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-muted)] hover:text-[var(--accent-dark)] border border-[var(--border)] hover:border-[rgba(112,134,107,0.4)] px-3 py-1.5 rounded-lg bg-[var(--surface-glass)] transition"
                         >
                           <Github size={13} /> GitHub
                         </a>
@@ -569,9 +575,9 @@ function App() {
             {/* ── TIER 2: All Projects (filterable compact grid) ── */}
             <div>
               <div className="flex items-center gap-4 mb-8">
-                <div className="flex-1 h-px bg-brand-200/50"></div>
-                <h3 className="text-base font-semibold text-slate-600 uppercase tracking-wide whitespace-nowrap">All Projects</h3>
-                <div className="flex-1 h-px bg-brand-200/50"></div>
+                <div className="flex-1 h-px bg-[var(--border)]"></div>
+                <h3 className="font-mono text-xs font-medium text-[var(--text-muted)] uppercase tracking-widest whitespace-nowrap">All Projects</h3>
+                <div className="flex-1 h-px bg-[var(--border)]"></div>
               </div>
 
               {/* Filter bar */}
@@ -580,10 +586,10 @@ function App() {
                   <button
                     key={filter}
                     onClick={() => setActiveFilter(filter)}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                    className={`font-mono px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
                       activeFilter === filter
-                        ? 'bg-brand-600 text-white shadow shadow-brand-600/20'
-                        : 'bg-white/80 text-slate-600 border border-slate-200/80 hover:border-brand-300 hover:text-brand-600 backdrop-blur-sm'
+                        ? 'bg-[var(--accent)] text-[var(--bg-main)] shadow-[0_6px_18px_rgba(47,58,50,0.10)]'
+                        : 'bg-[rgba(252,251,248,0.62)] text-[var(--text-muted)] border border-[var(--border)] hover:border-[rgba(112,134,107,0.36)] hover:text-[var(--accent-dark)]'
                     }`}
                   >
                     {filter}
@@ -597,24 +603,24 @@ function App() {
                   filteredAllProjects.map((project) => (
                     <div
                       key={project.id}
-                      className={`bg-white/85 backdrop-blur-sm rounded-xl p-5 border border-white/80 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-brand-200/60 flex flex-col ${project.isFeatured ? 'cursor-pointer' : ''}`}
+                      className={`bg-[var(--card-bg)] backdrop-blur-sm rounded-xl p-5 border border-[var(--surface-glass-border)] shadow-[0_8px_22px_rgba(47,58,50,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgba(112,134,107,0.26)] hover:shadow-[0_4px_20px_rgba(47,58,50,0.09)] flex flex-col ${project.isFeatured ? 'cursor-pointer' : ''}`}
                       onClick={() => project.isFeatured && openProjectModal(project.featuredData)}
                     >
-                      {/* Title row with optional Featured badge */}
+                      {/* Title row */}
                       <div className="flex items-start justify-between gap-2 mb-1.5">
-                        <h4 className="font-semibold text-slate-900 leading-snug">{project.title}</h4>
+                        <h4 className="font-syne font-semibold text-[var(--text-main)] leading-snug">{project.title}</h4>
                         {project.isFeatured && (
-                          <span className="shrink-0 text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/80">
+                          <span className="font-mono shrink-0 text-[10px] font-medium text-[var(--accent-dark)] bg-[var(--accent-soft)] px-2 py-0.5 rounded-full border border-[rgba(112,134,107,0.26)]">
                             ★ Featured
                           </span>
                         )}
                       </div>
 
-                      <p className="text-slate-600 text-sm mb-3 leading-relaxed flex-1">{project.description}</p>
+                      <p className="text-[var(--text-muted)] text-sm mb-3 leading-relaxed flex-1">{project.description}</p>
 
                       <div className="flex flex-wrap gap-1.5 mb-3">
                         {project.tags.map((tag, i) => (
-                          <span key={i} className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-full text-xs border border-slate-200/80">
+                          <span key={i} className="font-mono bg-[rgba(252,251,248,0.62)] text-[var(--text-muted)] px-2 py-0.5 rounded-full text-[11px] border border-[var(--border)]">
                             {tag}
                           </span>
                         ))}
@@ -626,7 +632,7 @@ function App() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={e => e.stopPropagation()}
-                          className="inline-flex items-center gap-1.5 text-sm text-brand-600 hover:text-brand-700 font-medium"
+                          className="font-syne inline-flex items-center gap-1.5 text-sm text-[var(--accent-dark)] hover:text-[var(--accent-dark)] font-medium transition"
                         >
                           <Github size={13} /> GitHub
                         </a>
@@ -636,7 +642,7 @@ function App() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={e => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 text-sm text-brand-600 hover:text-brand-700 font-medium"
+                            className="font-syne inline-flex items-center gap-1.5 text-sm text-[var(--accent-dark)] hover:text-[var(--accent-dark)] font-medium transition"
                           >
                             <ExternalLink size={13} /> Demo
                           </a>
@@ -645,7 +651,7 @@ function App() {
                     </div>
                   ))
                 ) : (
-                  <div className="col-span-full text-center py-12 text-slate-400 text-sm">
+                  <div className="col-span-full text-center py-12 text-[rgba(95,107,97,0.72)] text-sm font-mono">
                     No projects in this category yet — check back soon.
                   </div>
                 )}
@@ -658,7 +664,7 @@ function App() {
                 href="https://github.com/nunohs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-md shadow-brand-600/20 transition"
+                className="font-syne inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent-dark)] text-[var(--bg-main)] px-6 py-2.5 rounded-full text-sm font-semibold shadow-[0_10px_24px_rgba(47,58,50,0.12)] transition"
               >
                 <Github size={16} /> View All on GitHub
               </a>
@@ -668,24 +674,24 @@ function App() {
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="py-20 bg-white/25 backdrop-blur-sm">
+        <section id="skills" className="py-20 bg-[rgba(236,239,232,0.46)]">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">My Skills</h2>
+            <h2 className="font-syne text-3xl font-bold text-center mb-16 text-[var(--text-main)]">My Skills</h2>
             <div className="max-w-5xl mx-auto">
               {skillCategories.map((category, categoryIndex) => (
                 <div key={categoryIndex} className="mb-12">
-                  <h3 className="text-xl font-semibold mb-6 text-brand-700 border-b border-brand-200/80 pb-2">
+                  <h3 className="font-syne text-sm font-semibold mb-6 text-[var(--accent-dark)] border-b border-[var(--border)] pb-3 uppercase tracking-wider">
                     {category.name}
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {category.skills.map((skill, skillIndex) => (
                       <div key={skillIndex} className="flex flex-col items-center group">
-                        <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg border border-white/80 shadow-sm mb-2 w-full flex justify-center items-center h-16 hover:shadow-md hover:bg-brand-50/90 transition">
-                          <div className="text-brand-600 group-hover:text-brand-700 transition-colors">
+                        <div className="bg-[var(--card-bg)] border border-[var(--surface-glass-border)] p-4 rounded-lg mb-2 w-full flex justify-center items-center h-16 shadow-[0_6px_16px_rgba(47,58,50,0.05)] hover:border-[rgba(112,134,107,0.32)] hover:bg-[var(--accent-light)] transition">
+                          <div className="text-[var(--text-muted)] group-hover:text-[var(--accent-dark)] transition-colors">
                             {skill.icon}
                           </div>
                         </div>
-                        <span className="text-slate-800 font-medium text-sm">{skill.name}</span>
+                        <span className="font-mono text-[var(--text-muted)] text-xs font-medium group-hover:text-[var(--text-muted)] transition-colors">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -696,31 +702,31 @@ function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-transparent">
+        <section id="contact" className="py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8 text-slate-900">Get In Touch</h2>
-            <div className="max-w-2xl mx-auto bg-white/75 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/70">
-              <h3 className="text-xl font-semibold mb-6 text-slate-900">Contact Information</h3>
+            <h2 className="font-syne text-3xl font-bold text-center mb-8 text-[var(--text-main)]">Get In Touch</h2>
+            <div className="max-w-2xl mx-auto bg-[var(--card-bg)] backdrop-blur-md p-8 rounded-xl border border-[var(--surface-glass-border)] shadow-[0_12px_34px_rgba(47,58,50,0.08)]">
+              <h3 className="font-syne text-lg font-semibold mb-6 text-[var(--text-main)] uppercase tracking-wide">Contact Information</h3>
               <div className="space-y-6">
-                <div className="flex items-center">
-                  <Mail className="mr-4 text-brand-600" size={24} />
+                <div className="flex items-center gap-4">
+                  <Mail className="text-[var(--accent-dark)] shrink-0" size={22} />
                   <div>
-                    <h4 className="font-medium text-slate-900">Email</h4>
-                    <p className="text-slate-700">hadinuno@gmail.com</p>
+                    <h4 className="font-syne font-medium text-[var(--text-main)] text-sm uppercase tracking-wide mb-0.5">Email</h4>
+                    <p className="text-[var(--text-muted)]">hadinuno@gmail.com</p>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <Linkedin className="mr-4 text-brand-600" size={24} />
+                <div className="flex items-center gap-4">
+                  <Linkedin className="text-[var(--accent-dark)] shrink-0" size={22} />
                   <div>
-                    <h4 className="font-medium text-slate-900">LinkedIn</h4>
-                    <p className="text-slate-700">https://www.linkedin.com/in/hadi-nuno-handrison/</p>
+                    <h4 className="font-syne font-medium text-[var(--text-main)] text-sm uppercase tracking-wide mb-0.5">LinkedIn</h4>
+                    <p className="text-[var(--text-muted)] text-sm">linkedin.com/in/hadi-nuno-handrison/</p>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <Github className="mr-4 text-brand-600" size={24} />
+                <div className="flex items-center gap-4">
+                  <Github className="text-[var(--accent-dark)] shrink-0" size={22} />
                   <div>
-                    <h4 className="font-medium text-slate-900">GitHub</h4>
-                    <p className="text-slate-700">https://github.com/nunohs</p>
+                    <h4 className="font-syne font-medium text-[var(--text-main)] text-sm uppercase tracking-wide mb-0.5">GitHub</h4>
+                    <p className="text-[var(--text-muted)]">github.com/nunohs</p>
                   </div>
                 </div>
               </div>
@@ -730,15 +736,15 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-slate-900/95 backdrop-blur-md text-white py-12 border-t border-white/10">
+      <footer className="relative z-10 bg-[rgba(236,239,232,0.68)] text-[var(--text-main)] py-12 border-t border-[var(--border)]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <div className="font-bold text-xl mb-2">Hadi Nuno Handrison</div>
-              <p className="text-gray-400">Computer Science Graduate | Master of Management Candidate | Technology, Data & Project-Focused</p>
+              <div className="font-syne font-bold text-xl text-[var(--accent-dark)] mb-2">Hadi Nuno Handrison</div>
+              <p className="text-[var(--text-muted)] text-sm">Computer Science Graduate · Master of Management Candidate · Technology, Data & Business</p>
             </div>
           </div>
-          <div className="border-t border-white/10 mt-8 pt-8 text-center text-slate-400">
+          <div className="border-t border-[var(--border)] mt-8 pt-8 text-center text-[rgba(95,107,97,0.72)] text-sm font-mono">
             <p>© {new Date().getFullYear()} Hadi Nuno Handrison. All rights reserved.</p>
           </div>
         </div>
@@ -747,24 +753,24 @@ function App() {
       {/* Project Modal */}
       {selectedProject && (
         <div
-          className="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[rgba(47,58,50,0.54)] z-50 flex items-center justify-center p-4 backdrop-blur-sm"
           onClick={closeProjectModal}
         >
           <div
-            className="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            className="bg-[var(--card-bg)] border border-[var(--border)] rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl shadow-[rgba(47,58,50,0.18)]"
             onClick={e => e.stopPropagation()}
           >
             {/* Modal header */}
-            <div className="flex justify-between items-start p-6 border-b border-slate-100">
+            <div className="flex justify-between items-start p-6 border-b border-[var(--surface-glass-border)]">
               <div>
-                <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full border border-brand-100">
+                <span className="font-mono text-[10px] font-medium text-[var(--accent-dark)] bg-[var(--accent-soft)] px-2.5 py-0.5 rounded-full border border-[rgba(112,134,107,0.26)]">
                   {selectedProject.category}
                 </span>
-                <h3 className="text-xl font-bold text-slate-900 mt-2">{selectedProject.title}</h3>
+                <h3 className="font-syne text-xl font-bold text-[var(--text-main)] mt-2">{selectedProject.title}</h3>
               </div>
               <button
                 onClick={closeProjectModal}
-                className="text-slate-400 hover:text-slate-600 ml-4 shrink-0 mt-1 transition"
+                className="text-[rgba(95,107,97,0.72)] hover:text-[var(--text-muted)] ml-4 shrink-0 mt-1 transition"
               >
                 <X size={22} />
               </button>
@@ -773,7 +779,7 @@ function App() {
             {/* Image carousel — only when images exist */}
             {selectedProject.images && selectedProject.images.length > 0 && (
               <>
-                <div className="relative bg-slate-100">
+                <div className="relative bg-[var(--section-bg)]">
                   <img
                     src={selectedProject.images[modalImageIndex].url}
                     alt={selectedProject.title}
@@ -783,7 +789,7 @@ function App() {
                     <>
                       <button
                         onClick={prevModalImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2.5 rounded-full hover:bg-black/70 transition"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-[rgba(47,58,50,0.72)] text-[var(--bg-main)] p-2.5 rounded-full hover:bg-[rgba(47,58,50,0.86)] transition"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M15 18l-6-6 6-6" />
@@ -791,31 +797,31 @@ function App() {
                       </button>
                       <button
                         onClick={nextModalImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2.5 rounded-full hover:bg-black/70 transition"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-[rgba(47,58,50,0.72)] text-[var(--bg-main)] p-2.5 rounded-full hover:bg-[rgba(47,58,50,0.86)] transition"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M9 18l6-6-6-6" />
                         </svg>
                       </button>
-                      <div className="absolute top-3 right-3 bg-black/55 text-white text-xs px-2.5 py-1 rounded-full">
+                      <div className="font-mono absolute top-3 right-3 bg-[rgba(47,58,50,0.72)] text-[var(--bg-main)] text-xs px-2.5 py-1 rounded-full">
                         {modalImageIndex + 1}/{selectedProject.images.length}
                       </div>
                     </>
                   )}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/65 to-transparent px-5 py-4">
-                    <p className="text-white text-sm">{selectedProject.images[modalImageIndex].subtitle}</p>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[rgba(47,58,50,0.78)] to-transparent px-5 py-4">
+                    <p className="font-mono text-[var(--bg-main)] text-xs">{selectedProject.images[modalImageIndex].subtitle}</p>
                   </div>
                 </div>
 
                 {/* Thumbnail strip */}
                 {selectedProject.images.length > 1 && (
-                  <div className="flex overflow-x-auto gap-2 px-6 py-3 border-b border-slate-100 bg-slate-50/50">
+                  <div className="flex overflow-x-auto gap-2 px-6 py-3 border-b border-[var(--surface-glass-border)] bg-[rgba(236,239,232,0.72)]">
                     {selectedProject.images.map((img, i) => (
                       <button
                         key={i}
                         onClick={() => setModalImageIndex(i)}
                         className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition ${
-                          modalImageIndex === i ? 'border-brand-500' : 'border-transparent hover:border-slate-300'
+                          modalImageIndex === i ? 'border-[var(--accent)]' : 'border-transparent hover:border-[var(--accent)]'
                         }`}
                       >
                         <img src={img.url} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
@@ -828,13 +834,13 @@ function App() {
 
             {/* Project details */}
             <div className="p-6">
-              <p className="text-slate-500 italic text-sm mb-5 leading-relaxed">{selectedProject.hook}</p>
+              <p className="text-[var(--text-muted)] italic text-sm mb-5 leading-relaxed">{selectedProject.hook}</p>
 
               {selectedProject.outcomes && selectedProject.outcomes.length > 0 && (
                 <ul className="space-y-2 mb-6">
                   {selectedProject.outcomes.map((outcome, i) => (
-                    <li key={i} className="flex items-start gap-2 text-slate-700 text-sm">
-                      <span className="text-brand-500 mt-0.5 shrink-0">▸</span>
+                    <li key={i} className="flex items-start gap-2 text-[var(--text-muted)] text-sm">
+                      <span className="text-[var(--accent-dark)] mt-0.5 shrink-0">▸</span>
                       <span>{outcome}</span>
                     </li>
                   ))}
@@ -843,7 +849,7 @@ function App() {
 
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {selectedProject.tags.map((tag, i) => (
-                  <span key={i} className="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-xs font-medium border border-brand-100/60">
+                  <span key={i} className="font-mono bg-[var(--accent-soft)] text-[var(--accent-dark)] px-3 py-1 rounded-full text-xs border border-[rgba(112,134,107,0.26)]">
                     {tag}
                   </span>
                 ))}
@@ -853,7 +859,7 @@ function App() {
               <div className="flex justify-end gap-3 pt-2">
                 <button
                   onClick={closeProjectModal}
-                  className="px-4 py-2 text-sm border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 transition"
+                  className="font-syne px-4 py-2 text-sm border border-[var(--border)] rounded-lg text-[var(--text-muted)] hover:bg-[rgba(252,251,248,0.62)] transition"
                 >
                   Close
                 </button>
@@ -862,7 +868,7 @@ function App() {
                     href={selectedProject.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition"
+                    className="font-syne inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-[var(--bg-main)] bg-[var(--accent)] hover:bg-[var(--accent-dark)] rounded-lg transition"
                   >
                     <ExternalLink size={13} /> Live Demo
                   </a>
@@ -871,7 +877,7 @@ function App() {
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-slate-700 hover:text-brand-600 border border-slate-200 hover:border-brand-300 rounded-lg bg-white/60 transition"
+                  className="font-syne inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-[var(--text-muted)] hover:text-[var(--accent-dark)] border border-[var(--border)] hover:border-[rgba(112,134,107,0.36)] rounded-lg bg-[var(--surface-glass)] transition"
                 >
                   <Github size={13} /> GitHub
                 </a>
@@ -886,3 +892,5 @@ function App() {
 }
 
 export default App
+
+

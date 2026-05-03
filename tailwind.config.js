@@ -8,20 +8,23 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#f5f7ff',
-          100: '#e8ecfc',
-          200: '#d5ddf8',
-          300: '#b4c0f1',
-          400: '#8b9ae6',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+          50:  '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f5c518',
+          600: '#f5c518',
+          700: '#e6b800',
+          800: '#cc9900',
+          900: '#b38300',
         },
+      },
+      fontFamily: {
+        syne: ['Syne', 'sans-serif'],
+        mono: ['"DM Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },
   plugins: [],
 }
-

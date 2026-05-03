@@ -47,8 +47,8 @@ const fragmentShader = `
 export function ShaderPlane({
   position = [0, 0, 0],
   scale = [1, 1, 1],
-  color1 = '#6366f1',
-  color2 = '#e0e7ff',
+  color1 = '#E6ECE3',
+  color2 = '#F8F6F1',
 }) {
   const mesh = useRef(null)
 
@@ -86,7 +86,7 @@ export function ShaderPlane({
 export function EnergyRing({
   radius = 1,
   position = [0, 0, 0],
-  color = '#6366f1',
+  color = '#DCE5D8',
 }) {
   const mesh = useRef(null)
 

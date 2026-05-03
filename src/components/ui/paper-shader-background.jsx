@@ -2,12 +2,12 @@ import { Canvas } from '@react-three/fiber'
 import { ShaderPlane, EnergyRing } from './background-paper-shaders'
 
 /**
- * Full-viewport animated paper-style shader behind page content.
+ * Full-viewport animated shader behind page content.
  * Uses pointer-events-none so navigation and links stay clickable.
  */
 export function PaperShaderBackground({
-  color1 = '#6366f1', //#2c2c30
-  color2 = '#e8eafc', //
+  color1 = '#E6ECE3',
+  color2 = '#F8F6F1',
   className = '',
 }) {
   return (
@@ -27,11 +27,14 @@ export function PaperShaderBackground({
           color1={color1}
           color2={color2}
         />
-        
       </Canvas>
-      {/* Soft veil so text stays readable on all displays */}
+      {/* Subtle dark veil — keeps texture visible but doesn't overpower text */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-white/55 via-indigo-50/35 to-slate-100/65"
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse at 18% 10%, rgba(220,229,216,0.62) 0%, transparent 48%), radial-gradient(ellipse at 82% 18%, rgba(238,241,232,0.78) 0%, transparent 52%), linear-gradient(135deg, rgba(248,246,241,0.86) 0%, rgba(230,236,227,0.54) 100%)',
+        }}
         aria-hidden
       />
     </div>
