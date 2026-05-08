@@ -170,6 +170,14 @@ function App() {
       githubUrl: 'https://github.com/nunohs/nunohs-portfolio',
       category: 'Full-Stack',
     },
+    {
+      id: 'o10',
+      title: 'Resume Job Analyser',
+      description: 'Full-stack web app that helps users compare their resume against a specific job description',
+      tags: ['Python', 'Vercel', 'React', 'Vite',],
+      githubUrl: 'https://github.com/nunohs/resume-job-analyser',
+      category: ['Full-Stack', 'AI'],
+    },
   ];
 
   const filterCategories = ['All', 'Data & Finance', 'AI', 'Full-Stack', 'Business'];
@@ -189,9 +197,17 @@ function App() {
     ...otherProjects.map(op => ({ ...op, isFeatured: false, featuredData: null })),
   ];
 
+  const matchesFilter = (category, filter) => {
+    if (filter === 'All') return true;
+    return Array.isArray(category) ? category.includes(filter) : category === filter;
+  };
+
+  const displayCategory = (category) =>
+    Array.isArray(category) ? category.join(' · ') : category;
+
   const filteredAllProjects = activeFilter === 'All'
     ? allProjectsForGrid
-    : allProjectsForGrid.filter(p => p.category === activeFilter);
+    : allProjectsForGrid.filter(p => matchesFilter(p.category, activeFilter));
 
   // Skills with icons and categories
   const skillCategories = [
@@ -479,7 +495,7 @@ function App() {
                         />
                         {/* Category badge */}
                         <span className="font-mono absolute top-3 left-3 bg-[rgba(252,251,248,0.88)] text-[var(--accent-dark)] text-xs font-medium px-3 py-1 rounded-full border border-[rgba(112,134,107,0.32)] backdrop-blur-sm">
-                          {project.category}
+                          {displayCategory(project.category)}
                         </span>
                         {/* Carousel controls */}
                         {project.images.length > 1 && (
@@ -516,7 +532,7 @@ function App() {
                         <div className="absolute -top-8 -right-8 w-36 h-36 bg-[rgba(112,134,107,0.08)] rounded-full" />
                         <div className="absolute top-4 right-12 w-20 h-20 bg-[rgba(112,134,107,0.06)] rounded-full" />
                         <span className="font-mono relative z-10 bg-[var(--accent-soft)] text-[var(--accent-dark)] text-xs font-medium px-3 py-1 rounded-full border border-[rgba(112,134,107,0.32)]">
-                          {project.category}
+                          {displayCategory(project.category)}
                         </span>
                       </div>
                     )}
@@ -764,7 +780,7 @@ function App() {
             <div className="flex justify-between items-start p-6 border-b border-[var(--surface-glass-border)]">
               <div>
                 <span className="font-mono text-[10px] font-medium text-[var(--accent-dark)] bg-[var(--accent-soft)] px-2.5 py-0.5 rounded-full border border-[rgba(112,134,107,0.26)]">
-                  {selectedProject.category}
+                  {displayCategory(selectedProject.category)}
                 </span>
                 <h3 className="font-syne text-xl font-bold text-[var(--text-main)] mt-2">{selectedProject.title}</h3>
               </div>
