@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { PaperShaderBackground } from './components/ui/paper-shader-background'
+import { featuredProjects, excludedRepos, projectOverrides } from './projects.config'
 import {
   Github, Linkedin, Mail, ExternalLink, Menu, X, Code, Database, Server,
   Globe, FileCode, FileSpreadsheet, ChartBar,
@@ -11,6 +12,9 @@ import {
   Briefcase
 } from 'lucide-react';
 
+const prettifyRepoName = (name) =>
+  name.replace(/^nunohs-/i, '').replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -18,175 +22,34 @@ function App() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  // null = loading, [] = error/empty, array = loaded
+  const [otherProjects, setOtherProjects] = useState(null);
 
-  // --- Featured Projects (Tier 1) ---
-  const featuredProjects = [
-    {
-      id: 1,
-      title: 'ADB Web Application',
-      hook: 'Full-stack web app managing 1,000–5,000 biographical entries for the Australian Dictionary of Biography.',
-      outcomes: [
-        'Led backend development for a 5-person team, delivering RESTful APIs with Node.js and TypeScript',
-        'Integrated AzureSQL database and containerized deployment pipeline with Docker',
-        'Ran Agile/Scrum sprints tracked end-to-end in JIRA with full documentation in Confluence',
-        'Source code is client-owned (private) — project documented comprehensively via Confluence',
-      ],
-      tags: ['TypeScript', 'Node.js', 'Express.js', 'Azure', 'Docker', 'REST APIs', 'AzureSQL'],
-      githubUrl: 'https://github.com/nunohs',  
-      demoUrl: null,
-      category: 'Full-Stack',
-      images: [
-        { url: '/nunohs-portfolio/webdesign3.jpg', subtitle: 'Web Design Screenshot #1' },
-        { url: '/nunohs-portfolio/sampledesign.png', subtitle: 'Web Design Screenshot #2' },
-        { url: '/nunohs-portfolio/projectroadmap.png', subtitle: 'Project Roadmap' },
-        { url: '/nunohs-portfolio/confluencepic.png', subtitle: 'Confluence Documentation' },
-        { url: '/nunohs-portfolio/jirapic.png', subtitle: 'Jira Timeline' },
-      ],
-    },
-    {
-      id: 2,
-      title: 'Stock & Crypto Portfolio Tracker',
-      hook: 'Live financial dashboard tracking portfolio performance, allocation breakdowns, and return vs benchmark.',
-      outcomes: [
-        'Built a real-time data pipeline integrating Yahoo Finance API with pandas for live portfolio metrics',
-        'Visualized P&L, allocation breakdown, and benchmark return using interactive Plotly charts',
-        'Deployed as a Streamlit web app accessible from any browser with no local setup required',
-        'Supports multi-asset portfolios spanning equities and crypto in a single unified dashboard',
-      ],
-      tags: ['Python', 'Streamlit', 'Plotly', 'pandas', 'Yahoo Finance API'],
-      githubUrl: 'https://github.com/nunohs/financial-portfolio-tracker-dashboard',
-      demoUrl: null,
-      category: 'Data & Finance',
-      images: [{ url: '/nunohs-portfolio/dashboard-screenshot1.png', subtitle: 'Dashboard Screenshot #1' }],
-    },
-    {
-      id: 3,
-      title: 'Sales Performance Dashboard',
-      hook: 'Interactive Power BI dashboard analyzing sales trends, regional performance, and product revenue.',
-      outcomes: [
-        'Analyzed a multi-dimensional retail dataset across product categories, regions, and time periods',
-        'Built DAX measures for revenue, growth rate, and regional contribution KPIs',
-        'Designed drill-down visuals enabling filtering by category, region, and time period',
-        'Prepared and cleaned source data in Excel before ingestion into the Power BI data model',
-      ],
-      tags: ['Power BI', 'Microsoft Excel', 'DAX', 'Data Analysis'],
-      githubUrl: 'https://github.com/nunohs/Sales-performance-dashboard',
-      demoUrl: null,
-      category: 'Data & Finance',
-      images: [
-        { url: '/nunohs-portfolio/dashboard-overview-sales.png', subtitle: 'Dashboard Overview' },
-        { url: '/nunohs-portfolio/datamodel.png', subtitle: 'Data Model' }, 
-      ],
-    },
-    {
-      id: 4,
-      title: 'Harvey Norman Financial Analysis',
-      hook: 'Consulting-style financial deep dive identifying margin risks and revenue concentration in Harvey Norman.',
-      outcomes: [
-        'Conducted ratio analysis and DuPont decomposition across 3+ years of Harvey Norman annual reports',
-        'Identified 3+ margin risk areas and revenue concentration vulnerabilities affecting long-term performance',
-        'Applied cost allocation modelling to assess segment-level profitability drivers',
-        'Delivered findings as a structured consulting report with actionable strategic recommendations',
-      ],
-      tags: ['Financial Analysis', 'DuPont Framework', 'Excel', 'Business Strategy', 'Ratio Analysis'],
-      githubUrl: 'https://github.com/nunohs/Strategic-Financial-Business-Analysis-Harvey-Norman',
-      demoUrl: null,
-      category: 'Business',
-      images: [{ url: '/nunohs-portfolio/hvn_screenshot.png', subtitle: 'Harvey Norman Financial Analysis' }],
-    },
-  ];
-
-  // --- Other Projects ---
-  const otherProjects = [
-    {
-      id: 'o1',
-      title: 'EcoLive',
-      description: 'Mobile-first web app MVP testing whether gamified rewards can drive sustainable behaviour at events.',
-      tags: ['TypeScript', 'React', 'MVP', 'Product Design'],
-      githubUrl: 'https://github.com/nunohs/EcoLive',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o2',
-      title: 'Goals Tracker',
-      description: 'Full-stack MERN goals tracker with JWT authentication, React Query, TypeScript, and Tailwind CSS.',
-      tags: ['TypeScript', 'React', 'Node.js', 'MongoDB', 'JWT'],
-      githubUrl: 'https://github.com/nunohs/nunohs-goalsTracker',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o3',
-      title: 'Footy Trivia',
-      description: 'Android football quiz app built with Kotlin and Jetpack Compose.',
-      tags: ['Kotlin', 'Jetpack Compose', 'Android'],
-      githubUrl: 'https://github.com/nunohs/nunohs-footyTrivia',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o4',
-      title: 'Shadow Dance',
-      description: 'Java 2D rhythm game inspired by Guitar Hero with timing mechanics, scoring logic, and custom music.',
-      tags: ['Java', 'OOP', 'Game Development'],
-      githubUrl: 'https://github.com/nunohs/nunohs-shadowdance',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o5',
-      title: 'Tkn Fanta Runner',
-      description: 'Java 2D endless runner inspired by the Chrome Dino game, built with OOP principles.',
-      tags: ['Java', 'OOP', 'Game Development'],
-      githubUrl: 'https://github.com/nunohs/nunohs-tknfanta',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o6',
-      title: 'Tanks (Unity)',
-      description: 'Tank battle game built with Unity, customized and extended from the official Unity Tanks tutorial.',
-      tags: ['C#', 'Unity', 'Game Development'],
-      githubUrl: 'https://github.com/nunohs/nunohs-tanksUnity',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o7',
-      title: 'MindyCake',
-      description: 'Frontend website built for a local bakery, showcasing products and contact details.',
-      tags: ['JavaScript', 'React', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/nunohs/nunohs-mindycake',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o8',
-      title: 'CPU Scheduler Simulator',
-      description: 'Simulation of CPU scheduling algorithms (FCFS, SJF, Round Robin) implemented in C.',
-      tags: ['C', 'Systems', 'Operating Systems'],
-      githubUrl: 'https://github.com/nunohs/nunohs-cpuschedulersim',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o9',
-      title: 'nunohs-portfolio',
-      description: 'This personal portfolio — built with React, Vite, Tailwind CSS, and a Three.js animated background.',
-      tags: ['React', 'Vite', 'Tailwind CSS', 'Three.js'],
-      githubUrl: 'https://github.com/nunohs/nunohs-portfolio',
-      category: 'Full-Stack',
-    },
-    {
-      id: 'o10',
-      title: 'Resume Job Analyser',
-      description: 'Full-stack web app that helps users compare their resume against a specific job description',
-      tags: ['Python', 'Vercel', 'React', 'Vite',],
-      githubUrl: 'https://github.com/nunohs/resume-job-analyser',
-      category: ['Full-Stack', 'AI'],
-    },
-    {
-      id: 'o11',
-      title: 'Ecommerce KPI Dashboard',
-      description: 'A full-stack business analytics dashboard tracking 8 key e-commerce metrics — revenue, AOV, churn, CLV, and more — with interactive charts and AI-generated business insights.',
-      tags: ['Python', 'Data Analysis', 'Dashboard', 'Python', 'Business Analysis', 'AI'],
-      githubUrl: 'https://github.com/nunohs/ecommerce-kpi-dashboard',
-      category: ['Data & Finance', 'AI', 'Full-Stack', 'Business'],
-    },
-  ];
+  useEffect(() => {
+    fetch('https://api.github.com/users/nunohs/repos?sort=pushed&per_page=100')
+      .then(res => {
+        if (!res.ok) throw new Error('GitHub API error');
+        return res.json();
+      })
+      .then(repos => {
+        const projects = repos
+          .filter(r => !r.private && !excludedRepos.includes(r.name))
+          .map(r => {
+            const override = projectOverrides[r.name] || {};
+            return {
+              id: r.id,
+              title: override.title || prettifyRepoName(r.name),
+              description: override.description || r.description || '',
+              tags: override.tags || (r.topics?.length ? r.topics : r.language ? [r.language] : []),
+              githubUrl: r.html_url,
+              demoUrl: null,
+              category: override.category || 'Full-Stack',
+            };
+          });
+        setOtherProjects(projects);
+      })
+      .catch(() => setOtherProjects([]));
+  }, []);
 
   const filterCategories = ['All', 'Data & Finance', 'AI', 'Full-Stack', 'Business'];
 
@@ -202,7 +65,7 @@ function App() {
       isFeatured: true,
       featuredData: fp,
     })),
-    ...otherProjects.map(op => ({ ...op, isFeatured: false, featuredData: null })),
+    ...(otherProjects || []).map(op => ({ ...op, isFeatured: false, featuredData: null })),
   ];
 
   const matchesFilter = (category, filter) => {
@@ -623,7 +486,11 @@ function App() {
 
               {/* Compact project grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredAllProjects.length > 0 ? (
+                {otherProjects === null ? (
+                  [...Array(6)].map((_, i) => (
+                    <div key={i} className="bg-[var(--card-bg)] rounded-xl p-5 border border-[var(--surface-glass-border)] h-48 animate-pulse" />
+                  ))
+                ) : filteredAllProjects.length > 0 ? (
                   filteredAllProjects.map((project) => (
                     <div
                       key={project.id}
@@ -676,7 +543,9 @@ function App() {
                   ))
                 ) : (
                   <div className="col-span-full text-center py-12 text-[rgba(95,107,97,0.72)] text-sm font-mono">
-                    No projects in this category yet — check back soon.
+                    {otherProjects?.length === 0 && activeFilter === 'All'
+                      ? 'Could not load projects — view all on GitHub.'
+                      : 'No projects in this category yet — check back soon.'}
                   </div>
                 )}
               </div>
