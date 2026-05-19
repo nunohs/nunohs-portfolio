@@ -178,6 +178,14 @@ function App() {
       githubUrl: 'https://github.com/nunohs/resume-job-analyser',
       category: ['Full-Stack', 'AI'],
     },
+    {
+      id: 'o11',
+      title: 'Ecommerce KPI Dashboard',
+      description: 'A full-stack business analytics dashboard tracking 8 key e-commerce metrics — revenue, AOV, churn, CLV, and more — with interactive charts and AI-generated business insights.',
+      tags: ['Python', 'Data Analysis', 'Dashboard', 'Python', 'Business Analysis', 'AI'],
+      githubUrl: 'https://github.com/nunohs/ecommerce-kpi-dashboard',
+      category: ['Data & Finance', 'AI', 'Full-Stack', 'Business'],
+    },
   ];
 
   const filterCategories = ['All', 'Data & Finance', 'AI', 'Full-Stack', 'Business'];
