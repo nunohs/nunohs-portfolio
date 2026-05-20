@@ -81,6 +81,9 @@ export const excludedRepos = [
   'financial-portfolio-tracker-dashboard',
   'Sales-performance-dashboard',
   'Strategic-Financial-Business-Analysis-Harvey-Norman',
+  'oresimulator',
+  'nunohs-fcc-javascriptalgorithms-datastructures',
+  'nunohs-fcc-responsivewebdesign',
 ];
 
 // Per-repo display overrides, keyed by exact GitHub repo name.
