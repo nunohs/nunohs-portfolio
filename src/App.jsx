@@ -18,7 +18,9 @@ const prettifyRepoName = (name) =>
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [currentImageIndex, setCurrentImageIndex] = useState({ 1: 0, 2: 0, 3: 0, 4: 0 });
+  const [currentImageIndex, setCurrentImageIndex] = useState(
+    () => Object.fromEntries(featuredProjects.map(p => [p.id, 0]))
+  );
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalImageIndex, setModalImageIndex] = useState(0);
