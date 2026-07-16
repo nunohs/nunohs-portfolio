@@ -93,7 +93,7 @@ export const featuredProjects = [
     ],
     tags: ['Python', 'Streamlit', 'Plotly', 'pandas', 'Yahoo Finance API'],
     githubUrl: 'https://github.com/nunohs/financial-portfolio-tracker-dashboard',
-    demoUrl: null,
+    demoUrl: 'https://financial-portfolio-tracker-dashboard-szj5s9fm37v55bkuiajgy9.streamlit.app/',
     category: 'Data & Finance',
     images: [{ url: '/nunohs-portfolio/dashboard-screenshot1.png', subtitle: 'Dashboard Screenshot #1' }],
   },
